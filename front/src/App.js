@@ -1,14 +1,21 @@
-import React, { Component } from "react";
-import { Button } from "@material-ui/core";
-import styled from "styled-components";
+import React from "react";
+import { createGlobalStyle } from "styled-components";
 import AppLayout from "./components/AppLayout";
 
+const GlobalStyle = createGlobalStyle`
+	body {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+`;
 
 function App() {
 	return (
-		<div>
+		<>
+			<GlobalStyle />
 			<AppLayout />
-		</div>
+		</>
 	);
 }
 

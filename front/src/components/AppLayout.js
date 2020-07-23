@@ -1,29 +1,27 @@
 import React from "react";
+import Grid from "@material-ui/core/Grid";
+
 import TopicList from "./TopicList";
 import MenuBar from "./MenuBar";
-import Row from "./Row";
-import Col from "./Col";
 import Contents from "./Contents";
 
 function AppLayout() {
 	return (
-		<Row>
-			<Col>
-				<TopicList />
-			</Col>
-			<Col>
-				<Row>
-					<Col>
-						<MenuBar />
-					</Col>
-				</Row>
-				<Row>
-					<Col>
-						<Contents />
-					</Col>
-				</Row>
-			</Col>
-		</Row>
+		<Grid container direction="row">
+			<Grid item>
+				<TopicList></TopicList>
+			</Grid>
+			<Grid item>
+				<Grid container item direction="column">
+					<Grid item>
+						<MenuBar></MenuBar>
+					</Grid>
+					<Grid item>
+						<Contents></Contents>
+					</Grid>
+				</Grid>
+			</Grid>
+		</Grid>
 	);
 }
 
