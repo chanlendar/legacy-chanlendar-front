@@ -2,9 +2,21 @@ import { Tooltip } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 /**
+ * TopicListStyles
+ */
+export const useTopicListStyles = makeStyles((theme) => ({
+	root: {
+		width: "70px",
+		height: "100vh",
+		background: "#212529",
+		color: "white",
+	},
+}));
+
+/**
  * TopicStyles
  */
-export const topicStyles = makeStyles((theme) => ({
+export const useTopicStyles = makeStyles((theme) => ({
 	root: {
 		marginTop: theme.spacing(2),
 	},
@@ -18,12 +30,36 @@ export const topicStyles = makeStyles((theme) => ({
 /**
  * TopicButtonStyles
  */
-export const topicButtonStyles = makeStyles((theme) => ({
+export const useTopicButtonStyles = makeStyles((theme) => ({
 	root: {
 		width: "100%",
 		height: "100%",
-		color: "white",
+		color: "#adb5bd",
 		fontSize: "20px",
+	},
+}));
+
+/**
+ * GridStyles
+ */
+export const useGridStyles = makeStyles((theme) => ({
+	item: {
+		width: `calc(100% - 70px)`,
+	},
+}));
+
+/**
+ * AppBarStyles
+ */
+export const useAppBarStyles = makeStyles((theme) => ({
+	root: {
+		backgroundColor: "#495057",
+	},
+	toolbar: {
+		justifyContent: "space-between",
+	},
+	button: {
+		color: "#adb5bd",
 	},
 }));
 
