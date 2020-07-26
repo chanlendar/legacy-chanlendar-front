@@ -53,7 +53,7 @@ export const useGridStyles = makeStyles((theme) => ({
  */
 export const useAppBarStyles = makeStyles((theme) => ({
 	root: {
-		backgroundColor: "#495057",
+		backgroundColor: "#343a40",
 	},
 	toolbar: {
 		justifyContent: "space-between",
@@ -61,6 +61,27 @@ export const useAppBarStyles = makeStyles((theme) => ({
 	button: {
 		color: "#adb5bd",
 	},
+}));
+
+/**
+ * ContainerStyles
+ */
+export const useContainerStyles = makeStyles((theme) => ({
+	root: {
+		backgroundColor: "#343a40",
+		height: "calc(100vh - 64px)",
+		overflow: "hidden",
+	},
+}));
+
+/**
+ * CardStyles
+ */
+export const useCardStyles = makeStyles((theme) => ({
+	root: {
+		backgroundColor: "#495057",
+		marginTop: "64px",
+	}
 }));
 
 /**
