@@ -22,6 +22,7 @@ function AppLayout() {
 					</Grid>
 					<Grid item>
 						<Contents></Contents>
+
 					</Grid>
 				</Grid>
 			</Grid>

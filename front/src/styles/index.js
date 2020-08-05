@@ -81,7 +81,7 @@ export const useCardStyles = makeStyles((theme) => ({
 	root: {
 		backgroundColor: "#495057",
 		marginTop: "64px",
-	}
+	},
 }));
 
 /**
