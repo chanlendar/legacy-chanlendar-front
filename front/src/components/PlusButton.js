@@ -4,13 +4,14 @@ import { Avatar, Button, Grid } from "@material-ui/core";
 
 import TopicPopup from "../components/TopicPopup";
 import { OPEN_MODAL_EVENT, CLOSE_MODAL_EVENT } from "../reducers";
-import { useTopicStyles, useTopicButtonStyles, CustomTooltip } from "../styles";
+import { useTopicStyles, useTopicButtonStyles, CustomTooltip, useTest } from "../styles";
 
 function PlusButton() {
 	const topicStyles = useTopicStyles();
 	const buttonStyles = useTopicButtonStyles();
 	const dispatch = useDispatch();
 	const isOpend = useSelector((state) => state.isOpend);
+	const avatarVariant = isOpend ? "rounded" : "circle";
 
 	const onAddClick = (e) => {
 		dispatch({ type: OPEN_MODAL_EVENT });
@@ -23,13 +24,13 @@ function PlusButton() {
 	return (
 		<Grid className={topicStyles.root} item>
 			<CustomTooltip title="토픽 추가하기" placement="right" arrow>
-				<Avatar className={topicStyles.circle}>
+				<Avatar className={topicStyles.circle} variant={avatarVariant}>
 					<Button className={buttonStyles.root} onClick={onAddClick}>
 						+
 					</Button>
 				</Avatar>
 			</CustomTooltip>
-			<TopicPopup open={isOpend} onClose={onClose}/>
+			<TopicPopup open={isOpend} onClose={onClose} />
 		</Grid>
 	);
 }

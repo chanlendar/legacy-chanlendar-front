@@ -24,6 +24,7 @@ export const useTopicStyles = makeStyles((theme) => ({
 		width: "50px",
 		height: "50px",
 		background: "#495057",
+		transition: "all .3s",
 	},
 }));
 
@@ -82,6 +83,28 @@ export const useCardStyles = makeStyles((theme) => ({
 		backgroundColor: "#495057",
 		marginTop: "64px",
 	},
+}));
+
+/**
+ * Popup(modal) Styles
+ */
+export const usePopupStyles = makeStyles((theme) => ({
+	popup: {
+		width: "600px",
+		height: "337.5px",
+		backgroundColor: "#343a40",
+		color: "#f1f3f5",
+		position: "absolute",
+		top: "50%",
+		left: "50%",
+		transform: "translate(-50%, -50%)",
+	},
+}));
+
+export const useTest = makeStyles((theme) => ({
+	plus: {
+		transition: "all .5s",
+	}
 }));
 
 /**
