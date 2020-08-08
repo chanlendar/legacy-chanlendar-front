@@ -1,5 +1,7 @@
 export const OPEN_MODAL_EVENT = "OPEN_MODAL_EVENT";
 export const CLOSE_MODAL_EVENT = "CLOSE_MODAL_EVENT";
+export const ADD_TOPIC_EVENT = "ADD_TOPIC_EVENT";
+
 const initialState = {
 	User: {
 		nickname: "Ainte",
@@ -38,7 +40,6 @@ const rootReducer = (state = initialState, action) => {
 		default:
 			return state;
 		case OPEN_MODAL_EVENT:
-			console.log(`헤으응 : ${state.isOpend}`);
 			return {
 				...state,
 				isOpend: true,
@@ -46,6 +47,18 @@ const rootReducer = (state = initialState, action) => {
 		case CLOSE_MODAL_EVENT:
 			return {
 				...state,
+				isOpend: false,
+			};
+		/**
+		 * Add saga later to call CLOSE_MODAL_EVENT When this event executed succesfully
+		 */
+		case ADD_TOPIC_EVENT:
+			return {
+				...state,
+				Topics: [
+					...state.Topics,
+					{ id: action.data, title: action.data },
+				],
 				isOpend: false,
 			};
 	}

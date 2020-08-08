@@ -99,11 +99,17 @@ export const usePopupStyles = makeStyles((theme) => ({
 		left: "50%",
 		transform: "translate(-50%, -50%)",
 	},
-}));
-
-export const useTest = makeStyles((theme) => ({
-	plus: {
-		transition: "all .5s",
+	form: {
+		width: "90%",
+		marginTop: "55px",
+		margin: "auto",
+	},
+	buttons: {
+		width: "90%",
+		marginTop: "90px",
+		margin: "auto",
+		display: "flex",
+		justifyContent: "space-between",
 	}
 }));
 
