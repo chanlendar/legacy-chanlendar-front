@@ -4,7 +4,7 @@ import { Avatar, Button, Grid } from "@material-ui/core";
 
 import TopicPopup from "../components/TopicPopup";
 import { OPEN_MODAL_EVENT, CLOSE_MODAL_EVENT } from "../reducers";
-import { useTopicStyles, useTopicButtonStyles, CustomTooltip, useTest } from "../styles";
+import { useTopicStyles, useTopicButtonStyles, CustomTooltip } from "../styles";
 
 function PlusButton() {
 	const topicStyles = useTopicStyles();
