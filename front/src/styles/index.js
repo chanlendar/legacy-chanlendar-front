@@ -7,9 +7,14 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 export const useTopicListStyles = makeStyles((theme) => ({
 	root: {
 		width: "70px",
-		height: "100vh",
+		height: "100%",
 		background: "#212529",
 		color: "white",
+		overflowY: "scroll",
+		maxHeight: "100vh",
+		'&::-webkit-scrollbar': {
+			width: "0px"
+		}
 	},
 }));
 
