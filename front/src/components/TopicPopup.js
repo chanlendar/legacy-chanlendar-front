@@ -3,6 +3,7 @@ import { Modal, Typography, TextField, Fade, Button } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { usePopupStyles } from "../styles";
 import { ADD_TOPIC_EVENT } from "../reducers";
+
 function TopicPopup({ open, onClose }) {
 	const popupStyles = usePopupStyles();
 	const dispatch = useDispatch();
@@ -17,8 +18,8 @@ function TopicPopup({ open, onClose }) {
 		if (!topicText) {
 			setError(true);
 		} else {
-            setError(false);
-            dispatch({ type: ADD_TOPIC_EVENT, data: topicText});
+			setError(false);
+			dispatch({ type: ADD_TOPIC_EVENT, data: topicText });
 		}
 	};
 
@@ -45,6 +46,11 @@ function TopicPopup({ open, onClose }) {
 							onChange={onTopicTextChenage}
 							error={error}
 						/>
+						{error && (
+							<Typography color="error">
+								비어있으면 안돼요!
+							</Typography>
+						)}
 					</form>
 					<div className={popupStyles.buttons}>
 						<Button variant="outlined" onClick={onClose}>

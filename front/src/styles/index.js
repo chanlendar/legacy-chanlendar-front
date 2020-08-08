@@ -111,7 +111,7 @@ export const usePopupStyles = makeStyles((theme) => ({
 	},
 	buttons: {
 		width: "90%",
-		marginTop: "90px",
+		marginTop: "65px",
 		margin: "auto",
 		display: "flex",
 		justifyContent: "space-between",
