@@ -4,13 +4,26 @@ export const OPEN_MODAL_EVENT = "OPEN_MODAL_EVENT";
 export const CLOSE_MODAL_EVENT = "CLOSE_MODAL_EVENT";
 export const ADD_TOPIC_EVENT = "ADD_TOPIC_EVENT";
 
+const createTopicDummyData = (num) => {
+	const topics = new Array(num).fill(null);
+	const topicArray = topics.map(() => {
+		return {
+			id: faker.random.number(),
+			title: faker.name.firstName(),
+			Tasks: createTaskDummyData(faker.random.number(10)),
+		};
+	});
+
+	return topicArray;
+};
+
 const createTaskDummyData = (num) => {
 	const tasks = new Array(num).fill(null);
 	const taskArray = tasks.map(() => {
 		return {
 			id: faker.random.number(),
 			task: faker.hacker.phrase(),
-			date: faker.date.between('2020-08-09', new Date()),
+			date: faker.date.between("2020-08-07", new Date()),
 		};
 	});
 	return taskArray;
@@ -20,35 +33,7 @@ const initialState = {
 	User: {
 		nickname: "Ainte",
 	},
-	Topics: [
-		{
-			id: 2,
-			title: "chanlendar",
-			Tasks: [
-				{
-					id: 1,
-					task: "need to display the information",
-					date: "2020",
-				},
-			],
-		},
-		{
-			id: 3,
-			title: "godot community",
-		},
-		{
-			id: 4,
-			title: "devcord",
-		},
-		{
-			id: 5,
-			title: "Reactiflux",
-		},
-		{
-			id: 6,
-			title: "Axcent",
-		},
-	],
+	Topics: createTopicDummyData(10),
 	isOpend: false,
 };
 
