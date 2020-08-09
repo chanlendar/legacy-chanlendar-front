@@ -10,10 +10,14 @@ import PlusButton from "./PlusButton";
 function TopicList() {
 	const topicListStyles = useTopicListStyles();
 	const topics = useSelector((state) => state.Topics);
-
+	const main = {
+		id: 'main',
+		title: 'Main',
+	};
 	return (
 		<Paper square className={topicListStyles.root}>
 			<Grid container direction="column" alignItems="center">
+				<Topic topic={main} key={main.id} />
 				{topics.map((v) => (
 					<Topic topic={v} key={v.id} />
 				))}

@@ -22,10 +22,6 @@ const initialState = {
 	},
 	Topics: [
 		{
-			id: 1,
-			title: "Main",
-		},
-		{
 			id: 2,
 			title: "chanlendar",
 			Tasks: [
