@@ -4,6 +4,8 @@ export const OPEN_MODAL_EVENT = "OPEN_MODAL_EVENT";
 export const CLOSE_MODAL_EVENT = "CLOSE_MODAL_EVENT";
 export const ADD_TOPIC_EVENT = "ADD_TOPIC_EVENT";
 export const OPEN_TOPIC_EVENT = "OPEN_TOPIC_EVENT";
+export const OPEN_TOPIC_MODAL_EVENT = "OPEN_TOPIC_MODAL_EVENT";
+export const CLOSE_TOPIC_MODAL_EVENT = "CLOSE_TOPIC_MODAL_EVENT";
 
 const createTopicDummyData = (num) => {
 	const topics = new Array(num).fill(null);
@@ -35,12 +37,13 @@ const initialState = {
 		nickname: "Ainte",
 	},
 	Topics: createTopicDummyData(10),
-	isOpend: false,
 	currentTopic: {
 		id: null,
 		title: null,
 		Tasks: [],
 	},
+	isOpend: false,
+	isContentModalOpend: false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -73,14 +76,21 @@ const rootReducer = (state = initialState, action) => {
 				],
 				isOpend: false,
 			};
-		/**
-		 *
-		 */
 		case OPEN_TOPIC_EVENT:
 			return {
 				...state,
 				currentTopic: action.data,
 			};
+		case OPEN_TOPIC_MODAL_EVENT:
+			return {
+				...state,
+				isContentModalOpend: true,
+			}
+		case CLOSE_TOPIC_MODAL_EVENT:
+			return {
+				...state,
+				isContentModalOpend: false,
+			}
 	}
 };
 

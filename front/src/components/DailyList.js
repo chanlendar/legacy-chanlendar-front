@@ -9,15 +9,13 @@ import {
 	ListItemText,
 } from "@material-ui/core";
 
-import { useSelector } from "react-redux";
 import moment from "moment";
 
 import { useCardStyles, CustomPaper } from "../styles";
 
-function DailyList() {
+function DailyList({ topic }) {
 	const cardStyles = useCardStyles();
 
-	const topic = useSelector((state) => state.currentTopic);
 	// ex) 2020-08-09
 	const today = moment().format("YYYY-MM-DD");
 	const subheaderText = `${today} - Daily List`;
