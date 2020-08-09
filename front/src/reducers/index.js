@@ -3,6 +3,7 @@ import faker from "faker";
 export const OPEN_MODAL_EVENT = "OPEN_MODAL_EVENT";
 export const CLOSE_MODAL_EVENT = "CLOSE_MODAL_EVENT";
 export const ADD_TOPIC_EVENT = "ADD_TOPIC_EVENT";
+export const OPEN_TOPIC_EVENT = "OPEN_TOPIC_EVENT";
 
 const createTopicDummyData = (num) => {
 	const topics = new Array(num).fill(null);
@@ -35,6 +36,9 @@ const initialState = {
 	},
 	Topics: createTopicDummyData(10),
 	isOpend: false,
+	currentTopic : {
+
+	}
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -62,6 +66,15 @@ const rootReducer = (state = initialState, action) => {
 					{ id: action.data, title: action.data },
 				],
 				isOpend: false,
+			};
+		/**
+		 * 
+		 */
+		case OPEN_TOPIC_EVENT:
+			console.log(action.data);
+			return {
+				...state,
+				currentTopic: action.data
 			};
 	}
 };
