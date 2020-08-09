@@ -2,11 +2,6 @@ import React from "react";
 import { createGlobalStyle } from "styled-components";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import AppLayout from "./components/AppLayout";
-import moment from "moment";
-import faker from "faker";
-
-window.moment = moment;
-window.faker = faker;
 
 const GlobalStyle = createGlobalStyle`
 	body {
