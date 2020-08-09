@@ -1,4 +1,4 @@
-import { Tooltip } from "@material-ui/core";
+import { Tooltip, Paper } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 /**
@@ -12,9 +12,9 @@ export const useTopicListStyles = makeStyles((theme) => ({
 		color: "white",
 		overflowY: "scroll",
 		maxHeight: "100vh",
-		'&::-webkit-scrollbar': {
-			width: "0px"
-		}
+		"&::-webkit-scrollbar": {
+			width: "0px",
+		},
 	},
 }));
 
@@ -86,7 +86,11 @@ export const useContainerStyles = makeStyles((theme) => ({
 export const useCardStyles = makeStyles((theme) => ({
 	root: {
 		backgroundColor: "#495057",
-		marginTop: "64px",
+		maxHeight: "calc(100vh - 176px)",
+		overflow: "scroll",
+		"&::-webkit-scrollbar": {
+			width: "0px",
+		}
 	},
 }));
 
@@ -115,7 +119,7 @@ export const usePopupStyles = makeStyles((theme) => ({
 		margin: "auto",
 		display: "flex",
 		justifyContent: "space-between",
-	}
+	},
 }));
 
 /**
@@ -134,3 +138,16 @@ export const CustomTooltip = withStyles((theme) => ({
 		color: theme.palette.common.black,
 	},
 }))(Tooltip);
+
+/**
+ * CustomPaper
+ * Paper component 필요
+ */
+export const CustomPaper = withStyles((theme) => ({
+	root: {
+		backgroundColor: "#495057",
+		"&:not(:first-child)": {
+			marginTop: theme.spacing(2),
+		},
+	},
+}))(Paper);

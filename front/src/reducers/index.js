@@ -11,7 +11,7 @@ const createTopicDummyData = (num) => {
 		return {
 			id: faker.random.number(),
 			title: faker.name.firstName(),
-			Tasks: createTaskDummyData(faker.random.number(10)),
+			Tasks: createTaskDummyData(faker.random.number(8)),
 		};
 	});
 
@@ -24,7 +24,7 @@ const createTaskDummyData = (num) => {
 		return {
 			id: faker.random.number(),
 			task: faker.hacker.phrase(),
-			date: faker.date.between("2020-08-07", new Date()),
+			date: new Date(),
 		};
 	});
 	return taskArray;
@@ -36,9 +36,11 @@ const initialState = {
 	},
 	Topics: createTopicDummyData(10),
 	isOpend: false,
-	currentTopic : {
-
-	}
+	currentTopic: {
+		id: null,
+		title: null,
+		Tasks: [],
+	},
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -63,18 +65,21 @@ const rootReducer = (state = initialState, action) => {
 				...state,
 				Topics: [
 					...state.Topics,
-					{ id: action.data, title: action.data },
+					{
+						id: action.data,
+						title: action.data,
+						Tasks: createTaskDummyData(faker.random.number(10)),
+					},
 				],
 				isOpend: false,
 			};
 		/**
-		 * 
+		 *
 		 */
 		case OPEN_TOPIC_EVENT:
-			console.log(action.data);
 			return {
 				...state,
-				currentTopic: action.data
+				currentTopic: action.data,
 			};
 	}
 };
