@@ -1,6 +1,20 @@
+import faker from "faker";
+
 export const OPEN_MODAL_EVENT = "OPEN_MODAL_EVENT";
 export const CLOSE_MODAL_EVENT = "CLOSE_MODAL_EVENT";
 export const ADD_TOPIC_EVENT = "ADD_TOPIC_EVENT";
+
+const createTaskDummyData = (num) => {
+	const tasks = new Array(num).fill(null);
+	const taskArray = tasks.map(() => {
+		return {
+			id: faker.random.number(),
+			task: faker.hacker.phrase(),
+			date: faker.date.between('2020-08-09', new Date()),
+		};
+	});
+	return taskArray;
+};
 
 const initialState = {
 	User: {
@@ -14,6 +28,13 @@ const initialState = {
 		{
 			id: 2,
 			title: "chanlendar",
+			Tasks: [
+				{
+					id: 1,
+					task: "need to display the information",
+					date: "2020",
+				},
+			],
 		},
 		{
 			id: 3,
