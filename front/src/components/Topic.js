@@ -16,6 +16,7 @@ function Topic({ topic }) {
 	const onClick = (e) => {
 		dispatch({ type: OPEN_TOPIC_EVENT, data: topic });
 	};
+	
 	return (
 		<Grid className={topicStyles.root} item>
 			<CustomTooltip title={topic.title} placement="right" arrow>
