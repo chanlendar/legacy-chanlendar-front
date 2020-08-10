@@ -2,9 +2,10 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Avatar, Button, Grid } from "@material-ui/core";
 
-import TopicPopup from "../components/TopicPopup";
 import { OPEN_MODAL_EVENT, CLOSE_MODAL_EVENT } from "../reducers";
 import { useTopicStyles, useTopicButtonStyles, CustomTooltip } from "../styles";
+import CustomModal from "./CustomModal";
+import { useOpenAndCloseEvent } from "../hooks";
 
 function PlusButton() {
 	const topicStyles = useTopicStyles();
@@ -13,13 +14,7 @@ function PlusButton() {
 	const isOpend = useSelector((state) => state.isOpend);
 	const avatarVariant = isOpend ? "rounded" : "circle";
 
-	const onAddClick = (e) => {
-		dispatch({ type: OPEN_MODAL_EVENT });
-	};
-
-	const onClose = (e) => {
-		dispatch({ type: CLOSE_MODAL_EVENT });
-	};
+	const [openEvent, closeEvent] = useOpenAndCloseEvent(OPEN_MODAL_EVENT, CLOSE_MODAL_EVENT);
 
 	return (
 		<Grid className={topicStyles.root} item>
@@ -30,7 +25,8 @@ function PlusButton() {
 					</Button>
 				</Avatar>
 			</CustomTooltip>
-			<TopicPopup open={isOpend} onClose={onClose} />
+			<CustomModal />
+			{/* <TopicPopup open={isOpend} onClose={onClose} /> */}
 		</Grid>
 	);
 }

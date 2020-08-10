@@ -1,12 +1,12 @@
 import faker from "faker";
 
-export const OPEN_MODAL_EVENT = "OPEN_MODAL_EVENT";
-export const CLOSE_MODAL_EVENT = "CLOSE_MODAL_EVENT";
 export const ADD_TOPIC_EVENT = "ADD_TOPIC_EVENT";
+export const ADD_TASK_EVENT = "ADD_TASK_EVENT";
 export const OPEN_TOPIC_EVENT = "OPEN_TOPIC_EVENT";
 export const OPEN_TOPIC_MODAL_EVENT = "OPEN_TOPIC_MODAL_EVENT";
 export const CLOSE_TOPIC_MODAL_EVENT = "CLOSE_TOPIC_MODAL_EVENT";
-export const ADD_TASK_EVENT = "ADD_TASK_EVENT";
+export const OPEN_MODAL_EVENT = "OPEN_MODAL_EVENT";
+export const CLOSE_MODAL_EVENT = "CLOSE_MODAL_EVENT";
 
 const createTopicDummyData = (num) => {
 	const topics = new Array(num).fill(null);
