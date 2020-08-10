@@ -14,8 +14,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { useContainerStyles, usePopupStyles } from "../styles";
 import {
-	OPEN_TOPIC_MODAL_EVENT,
-	CLOSE_TOPIC_MODAL_EVENT,
+	OPEN_TASK_MODAL_EVENT,
+	CLOSE_TASK_MODAL_EVENT,
 	ADD_TASK_EVENT,
 } from "../reducers";
 import Calendar from "./Calendar";
@@ -23,7 +23,7 @@ import Calendar from "./Calendar";
 function Contents() {
 	const containerStyles = useContainerStyles();
 	const popupStyles = usePopupStyles();
-	const { currentTopic, isContentModalOpend, Topics } = useSelector(
+	const { currentTopic, isTaskModalOpend, Topics } = useSelector(
 		(state) => state,
 	);
 
@@ -33,7 +33,7 @@ function Contents() {
 	const dispatch = useDispatch();
 
 	const onClick = (e) => {
-		dispatch({ type: OPEN_TOPIC_MODAL_EVENT });
+		dispatch({ type: OPEN_TASK_MODAL_EVENT });
 	};
 
 	// MODAL INPUT EVENT
@@ -47,7 +47,7 @@ function Contents() {
 	};
 
 	const onCloseClick = (e) => {
-		dispatch({ type: CLOSE_TOPIC_MODAL_EVENT });
+		dispatch({ type: CLOSE_TASK_MODAL_EVENT });
 	};
 
 	return (
@@ -62,8 +62,8 @@ function Contents() {
 				</Button>
 				<Calendar topic={topic} />
 			</Container>
-			{isContentModalOpend && (
-				<Modal open={isContentModalOpend} onClose={onCloseClick}>
+			{isTaskModalOpend && (
+				<Modal open={isTaskModalOpend} onClose={onCloseClick}>
 					<>
 						<div className={popupStyles.popup}>
 							<Typography>태스크 만들기</Typography>

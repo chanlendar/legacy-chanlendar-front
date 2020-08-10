@@ -2,11 +2,14 @@ import faker from "faker";
 
 export const ADD_TOPIC_EVENT = "ADD_TOPIC_EVENT";
 export const ADD_TASK_EVENT = "ADD_TASK_EVENT";
-export const OPEN_TOPIC_EVENT = "OPEN_TOPIC_EVENT";
+
+export const CHANGE_TOPIC_EVENT = "CHANGE_TOPIC_EVENT";
+
+export const OPEN_TASK_MODAL_EVENT = "OPEN_TASK_MODAL_EVENT";
+export const CLOSE_TASK_MODAL_EVENT = "CLOSE_TASK_MODAL_EVENT";
+
 export const OPEN_TOPIC_MODAL_EVENT = "OPEN_TOPIC_MODAL_EVENT";
 export const CLOSE_TOPIC_MODAL_EVENT = "CLOSE_TOPIC_MODAL_EVENT";
-export const OPEN_MODAL_EVENT = "OPEN_MODAL_EVENT";
-export const CLOSE_MODAL_EVENT = "CLOSE_MODAL_EVENT";
 
 const createTopicDummyData = (num) => {
 	const topics = new Array(num).fill(null);
@@ -39,26 +42,26 @@ const initialState = {
 	},
 	Topics: createTopicDummyData(10),
 	currentTopic: "",
-	isOpend: false,
-	isContentModalOpend: false,
+	isTopicModalOpend: false,
+	isTaskModalOpend: false,
 };
 
 const rootReducer = (state = initialState, action) => {
 	switch (action.type) {
 		default:
 			return state;
-		case OPEN_MODAL_EVENT:
+		case OPEN_TOPIC_MODAL_EVENT:
 			return {
 				...state,
-				isOpend: true,
+				isTopicModalOpend: true,
 			};
-		case CLOSE_MODAL_EVENT:
+		case CLOSE_TOPIC_MODAL_EVENT:
 			return {
 				...state,
-				isOpend: false,
+				isTopicModalOpend: false,
 			};
 		/**
-		 * Add saga later to call CLOSE_MODAL_EVENT When this event executed succesfully
+		 * Add saga later to call CLOSE_TOPIC_MODAL_EVENT When this event executed succesfully
 		 */
 		case ADD_TOPIC_EVENT:
 			return {
@@ -71,23 +74,25 @@ const rootReducer = (state = initialState, action) => {
 						Tasks: createTaskDummyData(faker.random.number(10)),
 					},
 				],
-				isOpend: false,
+				isTopicModalOpend: false,
 			};
-		case OPEN_TOPIC_EVENT:
+		case CHANGE_TOPIC_EVENT:
 			return {
 				...state,
 				currentTopic: action.data,
 			};
-		case OPEN_TOPIC_MODAL_EVENT:
+
+		case OPEN_TASK_MODAL_EVENT:
 			return {
 				...state,
-				isContentModalOpend: true,
+				isTaskModalOpend: true,
 			};
-		case CLOSE_TOPIC_MODAL_EVENT:
+		case CLOSE_TASK_MODAL_EVENT:
 			return {
 				...state,
-				isContentModalOpend: false,
+				isTaskModalOpend: false,
 			};
+
 		case ADD_TASK_EVENT:
 			const topic = action.data.topic;
 			const newTopic = {
@@ -111,6 +116,7 @@ const rootReducer = (state = initialState, action) => {
 
 			const newState = {
 				...state,
+				isTaskModalOpend: false,
 				Topics: newTopics,
 			};
 

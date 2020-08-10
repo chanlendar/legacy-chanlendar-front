@@ -8,7 +8,7 @@ export const useInput = (state) => {
 		setInput(e.target.value);
 	};
 
-	return [input, setInput, onInputChange];
+	return [input, onInputChange];
 };
 
 export const useOpenAndCloseEvent = (openEventType, closeEventType) => {
