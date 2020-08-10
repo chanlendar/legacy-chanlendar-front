@@ -38,11 +38,7 @@ const initialState = {
 		nickname: "Ainte",
 	},
 	Topics: createTopicDummyData(10),
-	currentTopic: {
-		id: null,
-		title: null,
-		Tasks: [],
-	},
+	currentTopic: "",
 	isOpend: false,
 	isContentModalOpend: false,
 };

@@ -25,9 +25,12 @@ import {
 function Contents() {
 	const containerStyles = useContainerStyles();
 	const popupStyles = usePopupStyles();
-	const { currentTopic: topic, isContentModalOpend } = useSelector(
+	const { currentTopic, isContentModalOpend, Topics } = useSelector(
 		(state) => state,
 	);
+
+	const topic = Topics.find((v) => v.title === currentTopic);
+
 	const [inputA, setInputA] = useState("");
 	const dispatch = useDispatch();
 
@@ -35,10 +38,12 @@ function Contents() {
 		dispatch({ type: OPEN_TOPIC_MODAL_EVENT });
 	};
 
+	// MODAL INPUT EVENT
 	const onChange = (e) => {
 		setInputA(e.target.value);
 	};
 
+	// MODAL OPEN/CLOSE EVENT
 	const onCreateClick = (e) => {
 		dispatch({ type: ADD_TASK_EVENT, data: { inputA, topic } });
 	};
@@ -65,7 +70,7 @@ function Contents() {
 					alignItems="flex-start"
 				>
 					<Grid item xs={5} style={{ marginTop: "10px" }}>
-						<DailyList topic={topic} />
+						{topic && <DailyList topic={topic} />}
 					</Grid>
 					<Grid item xs style={{ marginTop: "10px" }}>
 						<MonthlyList />
