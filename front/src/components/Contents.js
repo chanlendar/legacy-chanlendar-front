@@ -5,7 +5,6 @@
 import React, { useState } from "react";
 import {
 	Container,
-	Grid,
 	Button,
 	Modal,
 	Typography,
@@ -14,13 +13,12 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 
 import { useContainerStyles, usePopupStyles } from "../styles";
-import DailyList from "./DailyList";
-import MonthlyList from "./MonthlyList";
 import {
 	OPEN_TOPIC_MODAL_EVENT,
 	CLOSE_TOPIC_MODAL_EVENT,
 	ADD_TASK_EVENT,
 } from "../reducers";
+import Calendar from "./Calendar";
 
 function Contents() {
 	const containerStyles = useContainerStyles();
@@ -62,20 +60,7 @@ function Contents() {
 				>
 					하읏
 				</Button>
-				<Grid
-					container
-					direction="row"
-					spacing={4}
-					justify="center"
-					alignItems="flex-start"
-				>
-					<Grid item xs={5} style={{ marginTop: "10px" }}>
-						{topic && <DailyList topic={topic} />}
-					</Grid>
-					<Grid item xs style={{ marginTop: "10px" }}>
-						<MonthlyList />
-					</Grid>
-				</Grid>
+				<Calendar topic={topic} />
 			</Container>
 			{isContentModalOpend && (
 				<Modal open={isContentModalOpend} onClose={onCloseClick}>
