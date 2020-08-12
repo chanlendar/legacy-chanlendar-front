@@ -18,7 +18,7 @@ import {
 	CLOSE_TASK_MODAL_EVENT,
 	ADD_TASK_EVENT,
 } from "../reducers";
-import Calendar from "./Calendar";
+import CalendarMode from "./CalendarMode";
 
 function Contents() {
 	const containerStyles = useContainerStyles();
@@ -60,7 +60,7 @@ function Contents() {
 				>
 					하읏
 				</Button>
-				<Calendar topic={topic} />
+				<CalendarMode topic={topic} />
 			</Container>
 			{isTaskModalOpend && (
 				<Modal open={isTaskModalOpend} onClose={onCloseClick}>

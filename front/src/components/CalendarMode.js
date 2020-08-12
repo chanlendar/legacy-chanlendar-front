@@ -3,7 +3,7 @@ import { Grid } from "@material-ui/core";
 import DailyList from "./DailyList";
 import MonthlyList from "./MonthlyList";
 
-function Calendar({ topic }) {
+function CalendarMode({ topic }) {
 	return (
 		<Grid
 			container
@@ -22,4 +22,4 @@ function Calendar({ topic }) {
 	);
 }
 
-export default Calendar;
+export default CalendarMode;
