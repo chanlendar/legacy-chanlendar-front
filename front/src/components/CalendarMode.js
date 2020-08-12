@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import DailyList from "./DailyList";
-import MonthlyList from "./MonthlyList";
+import MonthlyCalendar from "./MonthlyCalendar";
 
 function CalendarMode({ topic }) {
 	return (
@@ -16,7 +16,7 @@ function CalendarMode({ topic }) {
 				{topic && <DailyList topic={topic} />}
 			</Grid>
 			<Grid item xs style={{ marginTop: "10px" }}>
-				<MonthlyList />
+				<MonthlyCalendar />
 			</Grid>
 		</Grid>
 	);
