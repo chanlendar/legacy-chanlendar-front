@@ -1,4 +1,5 @@
 import faker from "faker";
+import moment from "moment";
 
 export const ADD_TOPIC_EVENT = "ADD_TOPIC_EVENT";
 export const ADD_TASK_EVENT = "ADD_TASK_EVENT";
@@ -10,6 +11,9 @@ export const CLOSE_TASK_MODAL_EVENT = "CLOSE_TASK_MODAL_EVENT";
 
 export const OPEN_TOPIC_MODAL_EVENT = "OPEN_TOPIC_MODAL_EVENT";
 export const CLOSE_TOPIC_MODAL_EVENT = "CLOSE_TOPIC_MODAL_EVENT";
+
+export const ADD_MONTH_EVENT = "ADD_MONTH_EVENT";
+export const SUBTRACT_MONTH_EVENT = "SUBTRACT_MONTH_EVENT";
 
 const createTopicDummyData = (num) => {
 	const topics = new Array(num).fill(null);
@@ -36,6 +40,12 @@ const createTaskDummyData = (num) => {
 	return taskArray;
 };
 
+const getMoment = () => {
+	return moment();
+};
+/**
+ * INITIAL STATE FOR REDUCER INITIALIZE
+ */
 const initialState = {
 	User: {
 		nickname: "Ainte",
@@ -44,6 +54,7 @@ const initialState = {
 	currentTopic: "",
 	isTopicModalOpend: false,
 	isTaskModalOpend: false,
+	date: getMoment(),
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -121,6 +132,18 @@ const rootReducer = (state = initialState, action) => {
 			};
 
 			return newState;
+
+		case ADD_MONTH_EVENT:
+			return {
+				...state,
+				date: action.data.add(1, "M"),
+			};
+
+		case SUBTRACT_MONTH_EVENT:
+			return {
+				...state,
+				date: action.data.subtract(1, "M"),
+			};
 	}
 };
 

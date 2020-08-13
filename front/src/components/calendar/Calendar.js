@@ -1,15 +1,17 @@
 import React from "react";
+import { TableContainer, Table } from "@material-ui/core";
+
 import CalendarHeader from "./CalendarHeader";
-import CalendarWeekdays from "./CalendarWeekdays";
 import CalendarContents from "./CalendarContents";
 
 function Calendar() {
 	return (
-		<div>
-			<CalendarHeader></CalendarHeader>
-			<CalendarWeekdays />
-			<CalendarContents></CalendarContents>
-		</div>
+		<TableContainer>
+			<Table>
+				<CalendarHeader></CalendarHeader>
+				<CalendarContents></CalendarContents>
+			</Table>
+		</TableContainer>
 	);
 }
 

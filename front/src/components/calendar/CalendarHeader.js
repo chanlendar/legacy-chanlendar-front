@@ -1,7 +1,15 @@
 import React from "react";
+import { TableHead } from "@material-ui/core";
+import CalendarWeekdays from "./CalendarWeekdays";
+import CalendarTitle from "./CalendarTitle";
 
 function CalendarHeader() {
-	return <div>아아 여긴 용의머리</div>;
+	return (
+		<TableHead>
+			<CalendarTitle></CalendarTitle>
+			<CalendarWeekdays />
+		</TableHead>
+	);
 }
 
 export default CalendarHeader;
