@@ -1,5 +1,7 @@
 import React from "react";
 import moment from "moment";
+import ButtonBase from "@material-ui/core/ButtonBase";
+import Calendar from "./Calendar";
 
 function MonthlyCalendar() {
 	const weekDaysShort = getWeekDaysShort();
@@ -11,8 +13,16 @@ function MonthlyCalendar() {
 
 	return (
 		<div>
-			<table>
+			<Calendar />
+			<table border="1">
 				<thead>
+					<tr>
+						<td>하으응</td>
+						<td colSpan="5">
+							<ButtonBase component="span">하으응</ButtonBase>
+						</td>
+						<td>하으응</td>
+					</tr>
 					<tr>{weekDaysShort}</tr>
 				</thead>
 				<tbody>{totalDays}</tbody>
@@ -23,7 +33,7 @@ function MonthlyCalendar() {
 
 const getWeekDaysShort = () => {
 	return moment.weekdaysShort().map((v) => {
-		return <td key={"weekday" + v}>{v}</td>;
+		return <td key={"weekday" + v}>{v.toUpperCase()}</td>;
 	});
 };
 

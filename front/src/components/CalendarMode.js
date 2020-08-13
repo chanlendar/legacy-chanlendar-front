@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import DailyList from "./DailyList";
-import MonthlyCalendar from "./MonthlyCalendar";
+import MonthlyCalendar from "./calendar/MonthlyCalendar";
 
 function CalendarMode({ topic }) {
 	return (
