@@ -3,26 +3,21 @@
  * 2020/08/09
  */
 import React, { useState } from "react";
-import {
-	Container,
-	Button,
-	Modal,
-	Typography,
-	TextField,
-} from "@material-ui/core";
+import { Container, Button, TextField } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 
-import { useContainerStyles, usePopupStyles } from "../styles";
+import { useContainerStyles, useModalStyles } from "../styles";
 import {
 	OPEN_TASK_MODAL_EVENT,
 	CLOSE_TASK_MODAL_EVENT,
 	ADD_TASK_EVENT,
 } from "../reducers";
 import CalendarMode from "./CalendarMode";
+import CustomModal from "./CustomModal";
 
 function Contents() {
 	const containerStyles = useContainerStyles();
-	const popupStyles = usePopupStyles();
+	const modalStyles = useModalStyles();
 	const { currentTopic, isTaskModalOpend, Topics } = useSelector(
 		(state) => state,
 	);
@@ -62,27 +57,30 @@ function Contents() {
 				</Button>
 				<CalendarMode topic={topic} />
 			</Container>
-			{isTaskModalOpend && (
-				<Modal open={isTaskModalOpend} onClose={onCloseClick}>
-					<>
-						<div className={popupStyles.popup}>
-							<Typography>태스크 만들기</Typography>
-							<Typography>무슨 일임?</Typography>
-							<TextField
-								variant="filled"
-								label="태스크 이름"
-								onChange={onChange}
-							/>
-						</div>
-						<div>
-							<Button variant="outlined">X</Button>
-							<Button variant="contained" onClick={onCreateClick}>
-								만들긔긔
-							</Button>
-						</div>
-					</>
-				</Modal>
-			)}
+			<CustomModal
+				title="태스크 만들기"
+				description="무슨 일인가요?"
+				isOpend={isTaskModalOpend}
+				onCloseClick={onCloseClick}
+			>
+				<form>
+					<TextField
+						variant="filled"
+						label="태스크 이름"
+						autoFocus
+						fullWidth
+						onChange={onChange}
+					/>
+				</form>
+				<div>
+					<Button variant="outlined" onClick={onCloseClick}>
+						X
+					</Button>
+					<Button variant="contained" onClick={onCreateClick}>
+						만들긔긔
+					</Button>
+				</div>
+			</CustomModal>
 		</div>
 	);
 }

@@ -90,36 +90,46 @@ export const useCardStyles = makeStyles((theme) => ({
 		overflow: "scroll",
 		"&::-webkit-scrollbar": {
 			width: "0px",
-		}
+		},
 	},
 }));
 
 /**
  * Popup(modal) Styles
  */
-export const usePopupStyles = makeStyles((theme) => ({
-	popup: {
-		width: "600px",
-		height: "337.5px",
-		backgroundColor: "#343a40",
-		color: "#f1f3f5",
+export const useModalStyles = makeStyles((theme) => ({
+	modal: {
+		width: "60%",
+		padding: "30px",
+		backgroundColor: "#212529",
+		color: "#e9ecef",
 		position: "absolute",
 		top: "50%",
 		left: "50%",
 		transform: "translate(-50%, -50%)",
 	},
-	form: {
-		width: "90%",
-		marginTop: "55px",
-		margin: "auto",
+	popup: {
+		// width: "600px",
+		// height: "337.5px",
+		// backgroundColor: "#343a40",
+		// color: "#f1f3f5",
+		// position: "absolute",
+		// top: "50%",
+		// left: "50%",
+		// transform: "translate(-50%, -50%)",
 	},
-	buttons: {
-		width: "90%",
-		marginTop: "65px",
-		margin: "auto",
-		display: "flex",
-		justifyContent: "space-between",
-	},
+	// form: {
+	// 	width: "90%",
+	// 	marginTop: "55px",
+	// 	margin: "auto",
+	// },
+	// buttons: {
+	// 	width: "90%",
+	// 	marginTop: "65px",
+	// 	margin: "auto",
+	// 	display: "flex",
+	// 	justifyContent: "space-between",
+	// },
 }));
 
 /**
