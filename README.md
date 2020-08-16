@@ -11,7 +11,7 @@ Check List
 -   [ ] need to abstract the form
 -   [x] need to separate calendar/task mode
 -   [x] styling with calendar
--   [ ] styling with modal
+-   [x] styling with modal
 -   [ ] implement a function that if a property has come a number to the calendar, the calendar reflects its property
 -   [x] implement a function that calendar shows this month
 -   [x] implement a function that can render previous and next month to the calendar if click buttons
