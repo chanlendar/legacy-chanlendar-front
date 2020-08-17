@@ -108,28 +108,18 @@ export const useModalStyles = makeStyles((theme) => ({
 		left: "50%",
 		transform: "translate(-50%, -50%)",
 	},
-	popup: {
-		// width: "600px",
-		// height: "337.5px",
-		// backgroundColor: "#343a40",
-		// color: "#f1f3f5",
-		// position: "absolute",
-		// top: "50%",
-		// left: "50%",
-		// transform: "translate(-50%, -50%)",
+	buttons: {
+		marginTop: "10px",
 	},
-	// form: {
-	// 	width: "90%",
-	// 	marginTop: "55px",
-	// 	margin: "auto",
-	// },
-	// buttons: {
-	// 	width: "90%",
-	// 	marginTop: "65px",
-	// 	margin: "auto",
-	// 	display: "flex",
-	// 	justifyContent: "space-between",
-	// },
+}));
+
+/**
+ * Table-Button Styles
+ */
+export const useTableButtonStyles = makeStyles((theme) => ({
+	root: {
+		minWidth: "0px",
+	}
 }));
 
 /**

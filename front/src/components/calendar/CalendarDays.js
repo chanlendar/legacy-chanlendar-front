@@ -1,22 +1,24 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { TableRow, TableCell } from "@material-ui/core";
+import { TableRow, TableCell, Button } from "@material-ui/core";
 import moment from "moment";
+import { useTableButtonStyles } from "../../styles";
 
 function CalendarDays() {
+	const buttonStyles = useTableButtonStyles();
 	const date = useSelector((state) => state.date);
-	const days = getDaysAllInOne(date);
+	const days = getDaysAllInOne(date, buttonStyles);
 
 	return <>{days}</>;
 }
 
-const getDaysAllInOne = (date) => {
+const getDaysAllInOne = (date, buttonStyles) => {
 	const firstDay = firstDayOfMonth(date);
 	const blanks = fillFirstDateOfMonth(firstDay);
-    const days = getDays(date.daysInMonth());
-    const totalDays = getTotalDays(blanks, days);
+	const days = getDays(date.daysInMonth(), buttonStyles);
+	const totalDays = getTotalDays(blanks, days);
 
-    return totalDays;
+	return totalDays;
 };
 
 const firstDayOfMonth = (dateObject) => {
@@ -34,13 +36,15 @@ const fillFirstDateOfMonth = (firstDay) => {
 	return blanks;
 };
 
-const getDays = (numberOfDays) => {
+const getDays = (numberOfDays, buttonStyles) => {
 	const days = Array(numberOfDays)
 		.fill("")
 		.map((_, i) => {
 			return (
 				<TableCell key={"days" + i} align="center">
-					{i + 1}
+					<Button classes={{ root: buttonStyles.root }}>
+						{i + 1}
+					</Button>
 				</TableCell>
 			);
 		});

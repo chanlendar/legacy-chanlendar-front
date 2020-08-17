@@ -53,7 +53,7 @@ function Contents() {
 					variant="outlined"
 					onClick={onClick}
 				>
-					하읏
+					생성
 				</Button>
 				<CalendarMode topic={topic} />
 			</Container>
@@ -72,7 +72,7 @@ function Contents() {
 						onChange={onChange}
 					/>
 				</form>
-				<div>
+				<div className={modalStyles.buttons}>
 					<Button variant="outlined" onClick={onCloseClick}>
 						X
 					</Button>
