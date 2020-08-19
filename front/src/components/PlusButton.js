@@ -7,13 +7,19 @@ import {
 	CLOSE_TOPIC_MODAL_EVENT,
 	ADD_TOPIC_EVENT,
 } from "../reducers";
-import { useTopicStyles, useTopicButtonStyles, CustomTooltip } from "../styles";
+import {
+	useTopicStyles,
+	useTopicButtonStyles,
+	CustomTooltip,
+	useModalStyles,
+} from "../styles";
 import CustomModal from "./CustomModal";
 import { useOpenAndCloseEvent, useInput } from "../hooks";
 
 function PlusButton() {
 	const topicStyles = useTopicStyles();
 	const buttonStyles = useTopicButtonStyles();
+	const modalStyles = useModalStyles();
 
 	const isOpend = useSelector((state) => state.isTopicModalOpend);
 	const avatarVariant = isOpend ? "rounded" : "circle";
@@ -53,8 +59,12 @@ function PlusButton() {
 						onChange={onInputChange}
 					/>
 				</form>
-				<div>
-					<Button variant="outlined" onClick={closeEvent}>
+				<div className={modalStyles.buttons}>
+					<Button
+						variant="outlined"
+						onClick={closeEvent}
+						style={{ marginRight: "10px" }}
+					>
 						X
 					</Button>
 					<Button variant="contained" onClick={onCreateClick}>

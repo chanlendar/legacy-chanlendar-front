@@ -73,11 +73,15 @@ function Contents() {
 					/>
 				</form>
 				<div className={modalStyles.buttons}>
-					<Button variant="outlined" onClick={onCloseClick}>
+					<Button
+						variant="outlined"
+						onClick={onCloseClick}
+						style={{ marginRight: "10px" }}
+					>
 						X
 					</Button>
 					<Button variant="contained" onClick={onCreateClick}>
-						만들긔긔
+						만들기
 					</Button>
 				</div>
 			</CustomModal>
