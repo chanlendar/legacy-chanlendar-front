@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Button, ButtonGroup } from "@material-ui/core";
 
 import { useAppBarStyles } from "../../styles";
 
-function MenuBar() {
+function Menu() {
 	const appBarStyles = useAppBarStyles();
 
 	return (
@@ -19,4 +19,4 @@ function MenuBar() {
 	);
 }
 
-export default MenuBar;
+export default Menu;
