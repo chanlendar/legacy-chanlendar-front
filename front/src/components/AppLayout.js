@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 
-import TopicList from "./topic/TopicList";
+import TopicList from "./topic/Topics";
 import MenuBar from "./menu/MenuBar";
 import Content from "./content/Content";
 

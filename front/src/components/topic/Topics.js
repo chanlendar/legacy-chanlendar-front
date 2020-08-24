@@ -2,20 +2,20 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Grid, Paper } from "@material-ui/core";
 
-import { useTopicListStyles } from '../../styles';
+import { useTopicsStyles } from '../../styles';
 import Topic from "./Topic";
 import PlusButton from "./PlusButton";
 
 
-function TopicList() {
-	const topicListStyles = useTopicListStyles();
+function Topics() {
+	const topicsStyles = useTopicsStyles();
 	const topics = useSelector((state) => state.Topics);
 	const main = {
 		id: 'main',
 		title: 'Main',
 	};
 	return (
-		<Paper square className={topicListStyles.root}>
+		<Paper square className={topicsStyles.root}>
 			<Grid container direction="column" alignItems="center">
 				<Topic topic={main} key={main.id} />
 				{topics.map((v) => (
@@ -27,4 +27,4 @@ function TopicList() {
 	);
 }
 
-export default TopicList;
+export default Topics;

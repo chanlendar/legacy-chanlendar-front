@@ -2,9 +2,9 @@ import { Tooltip, Paper } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 /**
- * TopicListStyles
+ * useTopicsStyles
  */
-export const useTopicListStyles = makeStyles((theme) => ({
+export const useTopicsStyles = makeStyles((theme) => ({
 	root: {
 		width: "70px",
 		height: "100%",
