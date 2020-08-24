@@ -6,16 +6,16 @@ import React, { useState } from "react";
 import { Container, Button, TextField } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 
-import { useContainerStyles, useModalStyles } from "../styles";
+import { useContainerStyles, useModalStyles } from "../../styles";
 import {
 	OPEN_TASK_MODAL_EVENT,
 	CLOSE_TASK_MODAL_EVENT,
 	ADD_TASK_EVENT,
-} from "../reducers";
+} from "../../reducers";
 import CalendarMode from "./CalendarMode";
-import CustomModal from "./CustomModal";
+import CustomModal from "../CustomModal";
 
-function Contents() {
+function Content() {
 	const containerStyles = useContainerStyles();
 	const modalStyles = useModalStyles();
 	const { currentTopic, isTaskModalOpend, Topics } = useSelector(
@@ -89,4 +89,4 @@ function Contents() {
 	);
 }
 
-export default Contents;
+export default Content;

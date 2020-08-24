@@ -1,9 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TableRow, TableCell, ButtonBase } from "@material-ui/core";
-import moment from "moment";
 
-import { ADD_MONTH_EVENT, SUBTRACT_MONTH_EVENT } from "../../reducers";
+import { ADD_MONTH_EVENT, SUBTRACT_MONTH_EVENT } from "../../../reducers";
 
 function CalendarTitle() {
 	const date = useSelector((state) => state.date);

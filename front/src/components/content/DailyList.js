@@ -11,7 +11,7 @@ import {
 
 import moment from "moment";
 
-import { useCardStyles, CustomPaper } from "../styles";
+import { useCardStyles, CustomPaper } from "../../styles";
 
 function DailyList({ topic }) {
 	const cardStyles = useCardStyles();

@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Grid, Paper } from "@material-ui/core";
 
-import { useTopicListStyles } from '../styles';
+import { useTopicListStyles } from '../../styles';
 import Topic from "./Topic";
 import PlusButton from "./PlusButton";
 

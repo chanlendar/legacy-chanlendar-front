@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { TableRow, TableCell, Button } from "@material-ui/core";
 import moment from "moment";
-import { useTableButtonStyles } from "../../styles";
+import { useTableButtonStyles } from "../../../styles";
 
 function CalendarDays() {
 	const buttonStyles = useTableButtonStyles();

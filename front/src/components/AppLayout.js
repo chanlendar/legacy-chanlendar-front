@@ -1,9 +1,9 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 
-import TopicList from "./TopicList";
-import MenuBar from "./MenuBar";
-import Contents from "./Contents";
+import TopicList from "./topic/TopicList";
+import MenuBar from "./menu/MenuBar";
+import Content from "./content/Content";
 
 import { useGridStyles } from '../styles';
 
@@ -21,8 +21,7 @@ function AppLayout() {
 						<MenuBar></MenuBar>
 					</Grid>
 					<Grid item>
-						<Contents></Contents>
-
+						<Content></Content>
 					</Grid>
 				</Grid>
 			</Grid>

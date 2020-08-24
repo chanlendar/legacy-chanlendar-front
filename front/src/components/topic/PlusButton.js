@@ -6,15 +6,15 @@ import {
 	OPEN_TOPIC_MODAL_EVENT,
 	CLOSE_TOPIC_MODAL_EVENT,
 	ADD_TOPIC_EVENT,
-} from "../reducers";
+} from "../../reducers";
 import {
 	useTopicStyles,
 	useTopicButtonStyles,
 	CustomTooltip,
 	useModalStyles,
-} from "../styles";
-import CustomModal from "./CustomModal";
-import { useOpenAndCloseEvent, useInput } from "../hooks";
+} from "../../styles";
+import CustomModal from "../CustomModal";
+import { useOpenAndCloseEvent, useInput } from "../../hooks";
 
 function PlusButton() {
 	const topicStyles = useTopicStyles();

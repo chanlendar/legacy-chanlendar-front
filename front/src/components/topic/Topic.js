@@ -1,8 +1,8 @@
 import React from "react";
 import { Avatar, Button, Grid } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
-import { useTopicStyles, useTopicButtonStyles, CustomTooltip } from "../styles";
-import { CHANGE_TOPIC_EVENT } from "../reducers";
+import { useTopicStyles, useTopicButtonStyles, CustomTooltip } from "../../styles";
+import { CHANGE_TOPIC_EVENT } from "../../reducers";
 
 function Topic({ topic }) {
 	const topicStyles = useTopicStyles();
