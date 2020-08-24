@@ -8,45 +8,35 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { useInput, useOpenAndCloseEvent } from "../../hooks";
 import { useContainerStyles } from "../../styles";
-import {
-	OPEN_TASK_MODAL_EVENT,
-	CLOSE_TASK_MODAL_EVENT,
-	ADD_TASK_EVENT,
-} from "../../reducers";
+import { OPEN_TASK_MODAL_EVENT, CLOSE_TASK_MODAL_EVENT, ADD_TASK_EVENT } from "../../reducers/topic";
 import CalendarMode from "./CalendarMode";
 import ContentModal from "./ContentModal";
 
 function Content() {
 	const containerStyles = useContainerStyles();
-	const { currentTopic, isTaskModalOpend, Topics } = useSelector(
-		(state) => state,
-	);
+	const { currentTopic, isTaskModalOpend } = useSelector((state) => state.topic);
 
-	// 몬가.. 몬가 비효율적임
-	const topic = Topics.find((v) => v.title === currentTopic);
+	/**
+	 * 2020/08/24
+	 * 문자열 비교 말고 id 숫자 비교로 topic 찾기
+	 *
+	 */
 
 	const [inputA, onInputAChange] = useInput("");
-	const [onOpenClick, onCloseClick] = useOpenAndCloseEvent(
-		OPEN_TASK_MODAL_EVENT,
-		CLOSE_TASK_MODAL_EVENT,
-	);
+	const [onOpenClick, onCloseClick] = useOpenAndCloseEvent(OPEN_TASK_MODAL_EVENT, CLOSE_TASK_MODAL_EVENT);
 
 	const dispatch = useDispatch();
 	const onCreateClick = (e) => {
-		dispatch({ type: ADD_TASK_EVENT, data: { inputA, topic } });
+		dispatch({ type: ADD_TASK_EVENT, data: { inputA, topicId: currentTopic.id } });
 	};
 
 	return (
 		<div className={containerStyles.root}>
 			<Container>
-				<Button
-					style={{ marginTop: "44px" }}
-					variant="outlined"
-					onClick={onOpenClick}
-				>
+				<Button style={{ marginTop: "44px" }} variant="outlined" onClick={onOpenClick}>
 					생성
 				</Button>
-				<CalendarMode topic={topic} />
+				<CalendarMode topic={currentTopic} />
 			</Container>
 			<ContentModal
 				isOpend={isTaskModalOpend}

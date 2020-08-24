@@ -9,7 +9,7 @@ import PlusButton from "./PlusButton";
 
 function Topics() {
 	const topicsStyles = useTopicsStyles();
-	const topics = useSelector((state) => state.Topics);
+	const topics = useSelector((state) => state.topic.Topics);
 	const main = {
 		id: 'main',
 		title: 'Main',

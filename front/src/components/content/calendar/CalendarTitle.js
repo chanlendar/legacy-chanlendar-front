@@ -1,18 +1,17 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TableRow, TableCell, ButtonBase } from "@material-ui/core";
-
-import { ADD_MONTH_EVENT, SUBTRACT_MONTH_EVENT } from "../../../reducers";
+import { ADD_MONTH_EVENT, SUBTRACT_MONTH_EVENT } from "../../../reducers/topic";
 
 function CalendarTitle() {
-	const date = useSelector((state) => state.date);
+	const { date } = useSelector((state) => state.topic);
 
 	const dispatch = useDispatch();
 	const onAddClick = () => {
-		dispatch({ type: ADD_MONTH_EVENT, data: date });
+		dispatch({ type: ADD_MONTH_EVENT });
 	};
 	const onSubtractClick = () => {
-		dispatch({ type: SUBTRACT_MONTH_EVENT, data: date });
+		dispatch({ type: SUBTRACT_MONTH_EVENT });
 	};
 
 	return (

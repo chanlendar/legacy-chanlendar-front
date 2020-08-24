@@ -6,7 +6,10 @@ import { useTableButtonStyles } from "../../../styles";
 
 function CalendarDays() {
 	const buttonStyles = useTableButtonStyles();
-	const date = useSelector((state) => state.date);
+	const date = useSelector(
+		(state) => state.topic.date,
+		(left, right) => left.isSame(right),
+	);
 	const days = getDaysAllInOne(date, buttonStyles);
 
 	return <>{days}</>;
@@ -30,9 +33,7 @@ const firstDayOfMonth = (dateObject) => {
 };
 
 const fillFirstDateOfMonth = (firstDay) => {
-	const blanks = Array.from({ length: firstDay }, (_, i) => (
-		<TableCell key={"blanks" + i}>{""}</TableCell>
-	));
+	const blanks = Array.from({ length: firstDay }, (_, i) => <TableCell key={"blanks" + i}>{""}</TableCell>);
 	return blanks;
 };
 
@@ -42,9 +43,7 @@ const getDays = (numberOfDays, buttonStyles) => {
 		.map((_, i) => {
 			return (
 				<TableCell key={"days" + i} align="center">
-					<Button classes={{ root: buttonStyles.root }}>
-						{i + 1}
-					</Button>
+					<Button classes={{ root: buttonStyles.root }}>{i + 1}</Button>
 				</TableCell>
 			);
 		});

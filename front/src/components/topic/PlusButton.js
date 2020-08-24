@@ -2,24 +2,16 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Avatar, Button, Grid } from "@material-ui/core";
 
-import {
-	OPEN_TOPIC_MODAL_EVENT,
-	CLOSE_TOPIC_MODAL_EVENT,
-	ADD_TOPIC_EVENT,
-} from "../../reducers";
+import { OPEN_TOPIC_MODAL_EVENT, CLOSE_TOPIC_MODAL_EVENT, ADD_TOPIC_EVENT } from "../../reducers/topic";
 import { useOpenAndCloseEvent, useInput } from "../../hooks";
 import TopicModal from "./TopicModal";
-import {
-	useTopicStyles,
-	useTopicButtonStyles,
-	CustomTooltip,
-} from "../../styles";
+import { useTopicStyles, useTopicButtonStyles, CustomTooltip } from "../../styles";
 
 function PlusButton() {
 	const topicStyles = useTopicStyles();
 	const buttonStyles = useTopicButtonStyles();
 
-	const isOpend = useSelector((state) => state.isTopicModalOpend);
+	const isOpend = useSelector((state) => state.topic.isTopicModalOpend);
 	const avatarVariant = isOpend ? "rounded" : "circle";
 
 	const [input, onInputChange] = useInput("");
@@ -29,10 +21,7 @@ function PlusButton() {
 		dispatch({ type: ADD_TOPIC_EVENT, data: input });
 	};
 
-	const [onOpenEvent, onCloseEvent] = useOpenAndCloseEvent(
-		OPEN_TOPIC_MODAL_EVENT,
-		CLOSE_TOPIC_MODAL_EVENT,
-	);
+	const [onOpenEvent, onCloseEvent] = useOpenAndCloseEvent(OPEN_TOPIC_MODAL_EVENT, CLOSE_TOPIC_MODAL_EVENT);
 
 	return (
 		<Grid className={topicStyles.root} item>
