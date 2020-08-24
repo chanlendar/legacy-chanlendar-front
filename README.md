@@ -16,4 +16,4 @@ Check List
 -   [x] implement a function that can render previous and next month to the calendar if click buttons
 -   [ ] implement a days of month click event
 -   [ ] make a date picker into task modal
--   [ ] separates components into folder by function.
+-   [x] separate components into folder by function.
