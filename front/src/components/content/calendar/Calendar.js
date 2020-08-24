@@ -2,7 +2,7 @@ import React from "react";
 import { TableContainer, Table } from "@material-ui/core";
 
 import CalendarHeader from "./CalendarHeader";
-import CalendarContents from "./CalendarContents";
+import CalendarContents from "./CalendarContent";
 
 function Calendar() {
 	return (

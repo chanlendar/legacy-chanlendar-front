@@ -3,7 +3,7 @@ import { TableBody } from "@material-ui/core";
 
 import CalendarDays from "./CalendarDays";
 
-function CalendarContents() {
+function CalendarContent() {
 	return (
 		<TableBody>
 			<CalendarDays></CalendarDays>
@@ -11,4 +11,4 @@ function CalendarContents() {
 	);
 }
 
-export default CalendarContents;
+export default CalendarContent;
