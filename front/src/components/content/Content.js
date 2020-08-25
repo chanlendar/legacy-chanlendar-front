@@ -16,12 +16,6 @@ function Content() {
 	const containerStyles = useContainerStyles();
 	const { currentTopic, isTaskModalOpend } = useSelector((state) => state.topic);
 
-	/**
-	 * 2020/08/24
-	 * 문자열 비교 말고 id 숫자 비교로 topic 찾기
-	 *
-	 */
-
 	const [inputA, onInputAChange] = useInput("");
 	const [onOpenClick, onCloseClick] = useOpenAndCloseEvent(OPEN_TASK_MODAL_EVENT, CLOSE_TASK_MODAL_EVENT);
 

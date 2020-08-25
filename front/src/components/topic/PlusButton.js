@@ -14,11 +14,12 @@ function PlusButton() {
 	const isOpend = useSelector((state) => state.topic.isTopicModalOpend);
 	const avatarVariant = isOpend ? "rounded" : "circle";
 
-	const [input, onInputChange] = useInput("");
+	const [input, onInputChange, setInput] = useInput("");
 	const dispatch = useDispatch();
 
 	const onCreateClick = (e) => {
 		dispatch({ type: ADD_TOPIC_EVENT, data: input });
+		setInput('');
 	};
 
 	const [onOpenEvent, onCloseEvent] = useOpenAndCloseEvent(OPEN_TOPIC_MODAL_EVENT, CLOSE_TOPIC_MODAL_EVENT);
