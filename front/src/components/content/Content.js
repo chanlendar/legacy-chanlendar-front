@@ -16,6 +16,7 @@ function Content() {
 	const containerStyles = useContainerStyles();
 	const { currentTopic, isTaskModalOpend } = useSelector((state) => state.topic);
 
+
 	const [inputA, onInputAChange] = useInput("");
 	const [onOpenClick, onCloseClick] = useOpenAndCloseEvent(OPEN_TASK_MODAL_EVENT, CLOSE_TASK_MODAL_EVENT);
 
@@ -42,4 +43,4 @@ function Content() {
 	);
 }
 
-export default Content;
+export default React.memo(Content);

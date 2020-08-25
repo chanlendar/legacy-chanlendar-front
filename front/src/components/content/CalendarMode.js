@@ -22,4 +22,4 @@ function CalendarMode({ topic }) {
 	);
 }
 
-export default CalendarMode;
+export default React.memo(CalendarMode);

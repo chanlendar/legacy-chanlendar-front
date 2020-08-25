@@ -6,10 +6,7 @@ import { useTableButtonStyles } from "../../../styles";
 
 function CalendarDays() {
 	const buttonStyles = useTableButtonStyles();
-	const date = useSelector(
-		(state) => state.topic.date,
-		(left, right) => left.isSame(right),
-	);
+	const date = useSelector((state) => state.topic.date);
 	const days = getDaysAllInOne(date, buttonStyles);
 
 	return <>{days}</>;
