@@ -37,6 +37,7 @@ const initialState = {
 	isTopicModalOpend: false,
 	isTaskModalOpend: false,
 	date: getMoment(),
+	day: null,
 };
 
 export const ADD_TOPIC_EVENT = "ADD_TOPIC_EVENT";
@@ -44,13 +45,14 @@ export const ADD_TASK_EVENT = "ADD_TASK_EVENT";
 
 export const CHANGE_TOPIC_EVENT = "CHANGE_TOPIC_EVENT";
 
-export const ADD_MONTH_EVENT = "ADD_MONTH_EVENT";
-export const SUBTRACT_MONTH_EVENT = "SUBTRACT_MONTH_EVENT";
-
 export const OPEN_TASK_MODAL_EVENT = "OPEN_TASK_MODAL_EVENT";
 export const CLOSE_TASK_MODAL_EVENT = "CLOSE_TASK_MODAL_EVENT";
 export const OPEN_TOPIC_MODAL_EVENT = "OPEN_TOPIC_MODAL_EVENT";
 export const CLOSE_TOPIC_MODAL_EVENT = "CLOSE_TOPIC_MODAL_EVENT";
+
+export const ADD_MONTH_EVENT = "ADD_MONTH_EVENT";
+export const SUBTRACT_MONTH_EVENT = "SUBTRACT_MONTH_EVENT";
+export const CHANGE_DAY_EVENT = "CHANGE_DAY_EVENT";
 
 const reducer = (state = initialState, action) =>
 	produce(state, (draft) => {
@@ -101,10 +103,13 @@ const reducer = (state = initialState, action) =>
 				break;
 			// MONTH EVENTS
 			case ADD_MONTH_EVENT:
-				draft.date = moment(draft.date.add(1, "M"));
+				draft.date = draft.date.clone().add(1, "M");
 				break;
 			case SUBTRACT_MONTH_EVENT:
-				draft.date = moment(draft.date.subtract(1, "M"));
+				draft.date = draft.date.clone().subtract(1, "M");
+				break;
+			case CHANGE_DAY_EVENT:
+				draft.day = draft.date.clone().set('D', action.data);
 				break;
 			default:
 				break;

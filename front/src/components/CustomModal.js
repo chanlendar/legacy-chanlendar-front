@@ -4,7 +4,7 @@ import { Modal, Fade, Typography } from "@material-ui/core";
 
 import { useModalStyles } from "../styles";
 
-function CustomModal({ title, description, isOpend, onCloseClick, children }) {
+function CustomModal({ title, description, isOpend, onCloseClick, buttons, children }) {
 	const modalStyles = useModalStyles();
 	return (
 		isOpend && (
@@ -22,6 +22,7 @@ function CustomModal({ title, description, isOpend, onCloseClick, children }) {
 							{description}
 						</Typography>
 						{children}
+						{buttons}
 					</div>
 				</Fade>
 			</Modal>

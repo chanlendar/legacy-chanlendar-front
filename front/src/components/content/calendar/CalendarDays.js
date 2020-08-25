@@ -1,21 +1,33 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { TableRow, TableCell, Button } from "@material-ui/core";
 import moment from "moment";
+import { CHANGE_DAY_EVENT } from "../../../reducers/topic";
 import { useTableButtonStyles } from "../../../styles";
 
 function CalendarDays() {
 	const buttonStyles = useTableButtonStyles();
+	const dispatch = useDispatch();
+
+	const onClick = useCallback(
+		(day) => () => {
+			dispatch({
+				type: CHANGE_DAY_EVENT,
+				data: day,
+			});
+		},
+		[dispatch],
+	);
 	const date = useSelector((state) => state.topic.date);
-	const days = getDaysAllInOne(date, buttonStyles);
+	const days = getDaysAllInOne(date, buttonStyles, onClick);
 
 	return <>{days}</>;
 }
 
-const getDaysAllInOne = (date, buttonStyles) => {
+const getDaysAllInOne = (date, buttonStyles, onClick) => {
 	const firstDay = firstDayOfMonth(date);
 	const blanks = fillFirstDateOfMonth(firstDay);
-	const days = getDays(date.daysInMonth(), buttonStyles);
+	const days = getDays(date.daysInMonth(), buttonStyles, onClick);
 	const totalDays = getTotalDays(blanks, days);
 
 	return totalDays;
@@ -30,17 +42,25 @@ const firstDayOfMonth = (dateObject) => {
 };
 
 const fillFirstDateOfMonth = (firstDay) => {
-	const blanks = Array.from({ length: firstDay }, (_, i) => <TableCell key={"blanks" + i}>{""}</TableCell>);
+	const blanks = Array.from({ length: firstDay }, (_, i) => (
+		<TableCell key={"blanks" + i}>{""}</TableCell>
+	));
 	return blanks;
 };
 
-const getDays = (numberOfDays, buttonStyles) => {
+const getDays = (numberOfDays, buttonStyles, onClick) => {
 	const days = Array(numberOfDays)
 		.fill("")
 		.map((_, i) => {
 			return (
 				<TableCell key={"days" + i} align="center">
-					<Button classes={{ root: buttonStyles.root }}>{i + 1}</Button>
+					{/* 여기에 클릭이벤트 추가 */}
+					<Button
+						classes={{ root: buttonStyles.root }}
+						onClick={onClick(i + 1)}
+					>
+						{i + 1}
+					</Button>
 				</TableCell>
 			);
 		});
