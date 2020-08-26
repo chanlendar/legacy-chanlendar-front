@@ -2,6 +2,8 @@
 
 # NETLIFY 용
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ecf815d0-4f61-4a21-81e7-e27c3515b482/deploy-status)](https://app.netlify.com/sites/chanlendar/deploys)
+
 ## Front
 
 Check List
