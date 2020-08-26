@@ -119,7 +119,19 @@ export const useModalStyles = makeStyles((theme) => ({
 export const useTableButtonStyles = makeStyles((theme) => ({
 	root: {
 		minWidth: "0px",
-	}
+	},
+}));
+
+/**
+ * Task Styles
+ */
+export const useTaskStyles = makeStyles((theme) => ({
+	finished: {
+		opacity: ".3",
+	},
+	notFinished: {
+		opacity: "1",
+	},
 }));
 
 /**
@@ -146,6 +158,7 @@ export const CustomTooltip = withStyles((theme) => ({
 export const CustomPaper = withStyles((theme) => ({
 	root: {
 		backgroundColor: "#495057",
+		transition: "all .3s",
 		"&:not(:first-child)": {
 			marginTop: theme.spacing(2),
 		},

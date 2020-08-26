@@ -5,7 +5,6 @@
 import React from "react";
 import { Container, Button } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
-import moment from "moment";
 
 import { useInput, useOpenAndCloseEvent } from "../../hooks";
 import { useContainerStyles } from "../../styles";
@@ -21,7 +20,7 @@ function Content() {
 	const containerStyles = useContainerStyles();
 	const { currentTopic, isTaskModalOpend } = useSelector((state) => state.topic);
 	// Date Picker로 바꿔도 됨
-	const day = useSelector((state) => state.topic.day) || moment();
+	const day = useSelector((state) => state.topic.day);
 
 	const [inputA, onInputAChange] = useInput("");
 	const [onOpenClick, onCloseClick] = useOpenAndCloseEvent(

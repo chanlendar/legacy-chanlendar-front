@@ -22,6 +22,7 @@ const createTaskDummyData = (num) => {
 			id: faker.random.number(),
 			task: faker.hacker.phrase(),
 			date: new Date(),
+			isFinished: false,
 		};
 	});
 	return taskArray;
@@ -37,13 +38,15 @@ const initialState = {
 	isTopicModalOpend: false,
 	isTaskModalOpend: false,
 	date: getMoment(),
-	day: null,
+	day: getMoment(),
 };
 
 export const ADD_TOPIC_EVENT = "ADD_TOPIC_EVENT";
-export const ADD_TASK_EVENT = "ADD_TASK_EVENT";
-
 export const CHANGE_TOPIC_EVENT = "CHANGE_TOPIC_EVENT";
+
+export const ADD_TASK_EVENT = "ADD_TASK_EVENT";
+export const FINISH_TASK_EVENT = "FINISH_TASK_EVENT";
+export const NOT_FINISH_TASK_EVENT = "NOT_FINISH_TASK_EVENT";
 
 export const OPEN_TASK_MODAL_EVENT = "OPEN_TASK_MODAL_EVENT";
 export const CLOSE_TASK_MODAL_EVENT = "CLOSE_TASK_MODAL_EVENT";
@@ -77,7 +80,7 @@ const reducer = (state = initialState, action) =>
 				draft.currentTopic = action.data;
 				break;
 			// TASK EVENTS ***START***
-			case ADD_TASK_EVENT:
+			case ADD_TASK_EVENT: {
 				// action.data => { inputA, topicId }
 				const topic = draft.Topics.find((t) => t.id === action.data.topicId);
 				topic.Tasks.push({
@@ -85,10 +88,28 @@ const reducer = (state = initialState, action) =>
 					task: action.data.inputA,
 					// Date Picker로 바꿔도 됨
 					date: action.data.day,
-                });
-                draft.currentTopic = topic;
-                draft.isTaskModalOpend = false;
+					isFinished: false,
+				});
+				draft.currentTopic = topic;
+				draft.isTaskModalOpend = false;
 				break;
+			}
+			// 완료를 하려는 의도와 취소를 하려는 의도는 엄연히 다른 것이기에 구분
+			case FINISH_TASK_EVENT: {
+				console.log(`${action.data.topicId}의 ${action.data.taskId}`);
+				const topic = draft.Topics.find((t) => t.id === action.data.topicId);
+				topic.Tasks.find((t) => t.id === action.data.taskId).isFinished = true;
+				draft.currentTopic = topic;
+				break;
+			}
+			case NOT_FINISH_TASK_EVENT: {
+				console.log("NOT FINISH TASK EVENT란다.");
+				console.log(`${action.data.topicId}의 ${action.data.taskId}`);
+				const topic = draft.Topics.find((t) => t.id === action.data.topicId);
+				topic.Tasks.find((t) => t.id === action.data.taskId).isFinished = false;
+				draft.currentTopic = topic;
+				break;
+			}
 			// MODAL EVENTS
 			case OPEN_TOPIC_MODAL_EVENT:
 				draft.isTopicModalOpend = true;
@@ -110,7 +131,7 @@ const reducer = (state = initialState, action) =>
 				draft.date = draft.date.clone().subtract(1, "M");
 				break;
 			case CHANGE_DAY_EVENT:
-				draft.day = draft.date.clone().set('D', action.data);
+				draft.day = draft.date.clone().set("D", action.data);
 				break;
 			default:
 				break;
