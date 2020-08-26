@@ -16,5 +16,6 @@ Check List
 -   [x] implement a days of month click event
 -   [x] separate components into folder by function.
 -   [ ] need to abstract the form
-*~~-   [ ] make a date picker into task modal~~*
+
+*~~make a date picker into task modal~~*
 
