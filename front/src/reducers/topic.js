@@ -96,15 +96,12 @@ const reducer = (state = initialState, action) =>
 			}
 			// 완료를 하려는 의도와 취소를 하려는 의도는 엄연히 다른 것이기에 구분
 			case FINISH_TASK_EVENT: {
-				console.log(`${action.data.topicId}의 ${action.data.taskId}`);
 				const topic = draft.Topics.find((t) => t.id === action.data.topicId);
 				topic.Tasks.find((t) => t.id === action.data.taskId).isFinished = true;
 				draft.currentTopic = topic;
 				break;
 			}
 			case NOT_FINISH_TASK_EVENT: {
-				console.log("NOT FINISH TASK EVENT란다.");
-				console.log(`${action.data.topicId}의 ${action.data.taskId}`);
 				const topic = draft.Topics.find((t) => t.id === action.data.topicId);
 				topic.Tasks.find((t) => t.id === action.data.taskId).isFinished = false;
 				draft.currentTopic = topic;
