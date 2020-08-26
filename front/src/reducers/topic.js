@@ -83,7 +83,8 @@ const reducer = (state = initialState, action) =>
 				topic.Tasks.push({
 					id: faker.random.number(),
 					task: action.data.inputA,
-					date: new Date(),
+					// Date Picker로 바꿔도 됨
+					date: action.data.day,
                 });
                 draft.currentTopic = topic;
                 draft.isTaskModalOpend = false;

@@ -5,30 +5,46 @@
 import React from "react";
 import { Container, Button } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
+import moment from "moment";
 
 import { useInput, useOpenAndCloseEvent } from "../../hooks";
 import { useContainerStyles } from "../../styles";
-import { OPEN_TASK_MODAL_EVENT, CLOSE_TASK_MODAL_EVENT, ADD_TASK_EVENT } from "../../reducers/topic";
+import {
+	OPEN_TASK_MODAL_EVENT,
+	CLOSE_TASK_MODAL_EVENT,
+	ADD_TASK_EVENT,
+} from "../../reducers/topic";
 import CalendarMode from "./CalendarMode";
 import ContentModal from "./ContentModal";
 
 function Content() {
 	const containerStyles = useContainerStyles();
 	const { currentTopic, isTaskModalOpend } = useSelector((state) => state.topic);
-
+	// Date Picker로 바꿔도 됨
+	const day = useSelector((state) => state.topic.day) || moment();
 
 	const [inputA, onInputAChange] = useInput("");
-	const [onOpenClick, onCloseClick] = useOpenAndCloseEvent(OPEN_TASK_MODAL_EVENT, CLOSE_TASK_MODAL_EVENT);
+	const [onOpenClick, onCloseClick] = useOpenAndCloseEvent(
+		OPEN_TASK_MODAL_EVENT,
+		CLOSE_TASK_MODAL_EVENT,
+	);
 
 	const dispatch = useDispatch();
 	const onCreateClick = (e) => {
-		dispatch({ type: ADD_TASK_EVENT, data: { inputA, topicId: currentTopic.id } });
+		dispatch({
+			type: ADD_TASK_EVENT,
+			data: { inputA, topicId: currentTopic.id, day },
+		});
 	};
 
 	return (
 		<div className={containerStyles.root}>
 			<Container>
-				<Button style={{ marginTop: "44px" }} variant="outlined" onClick={onOpenClick}>
+				<Button
+					style={{ marginTop: "44px" }}
+					variant="outlined"
+					onClick={onOpenClick}
+				>
 					생성
 				</Button>
 				<CalendarMode topic={currentTopic} />
