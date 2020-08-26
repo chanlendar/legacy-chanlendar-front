@@ -2,6 +2,5 @@
 node_modules
 
 # 빌드 관련
-public
 build
 dist
