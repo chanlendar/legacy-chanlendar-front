@@ -1,5 +1,7 @@
 # Chanlendar
 
+# NETLIFY 용
+
 ## Front
 
 Check List
@@ -17,5 +19,4 @@ Check List
 -   [x] separate components into folder by function.
 -   [ ] need to abstract the form
 
-*~~make a date picker into task modal~~*
-
+_~~make a date picker into task modal~~_
