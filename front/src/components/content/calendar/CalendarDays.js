@@ -18,24 +18,34 @@ function CalendarDays() {
 		},
 		[dispatch],
 	);
-	const date = useSelector((state) => state.topic.date);
-	const days = getDaysAllInOne(date, buttonStyles, onClick);
+	const { date, day } = useSelector((state) => state.topic);
+	const compareDate = date.clone();
+	const compareDay = day.clone();
+	const tasks = useSelector((state) => state.topic.currentTopic?.Tasks);
+	const monthTasks = tasks.filter((v) => v.date.isSame(date, "month"));
+
+	const days = getDaysAllInOne(
+		compareDate,
+		compareDay,
+		buttonStyles,
+		onClick,
+		monthTasks,
+	);
 
 	return <>{days}</>;
 }
 
-const getDaysAllInOne = (date, buttonStyles, onClick) => {
+const getDaysAllInOne = (date, day, buttonStyles, onClick, tasks) => {
 	const firstDay = firstDayOfMonth(date);
 	const blanks = fillFirstDateOfMonth(firstDay);
-	const days = getDays(date.daysInMonth(), buttonStyles, onClick);
+	const days = getDays(date, day, buttonStyles, onClick, tasks);
 	const totalDays = getTotalDays(blanks, days);
 
 	return totalDays;
 };
 
 const firstDayOfMonth = (dateObject) => {
-	const date = dateObject;
-	const firstDay = moment(date)
+	const firstDay = moment(dateObject)
 		.startOf("month")
 		.format("d");
 	return firstDay;
@@ -48,16 +58,36 @@ const fillFirstDateOfMonth = (firstDay) => {
 	return blanks;
 };
 
-const getDays = (numberOfDays, buttonStyles, onClick) => {
+const isSame = (date, tasks) => {
+	const isTaskExisted = tasks.find((v) => {
+		return v.date.isSame(date, "day");
+	});
+	let buttonVariant = "text";
+	if (isTaskExisted) {
+		buttonVariant = "outlined";
+	}
+	return buttonVariant;
+};
+
+// isSelectedDay 도 만들어야 될듯
+const isSelectedDay = (selectedDay, day) => {
+	return selectedDay.isSame(day, "day") ? "contained" : undefined;
+};
+const getDays = (date, day, buttonStyles, onClick, tasks) => {
+	const numberOfDays = date.daysInMonth();
+	const selectDay = day.clone();
 	const days = Array(numberOfDays)
 		.fill("")
 		.map((_, i) => {
+			const variant =
+				isSelectedDay(day, selectDay.set("date", i + 1)) ||
+				isSame(date.set("date", i + 1), tasks);
 			return (
 				<TableCell key={"days" + i} align="center">
-					{/* 여기에 클릭이벤트 추가 */}
 					<Button
 						classes={{ root: buttonStyles.root }}
 						onClick={onClick(i + 1)}
+						variant={variant}
 					>
 						{i + 1}
 					</Button>
@@ -89,4 +119,4 @@ const getTotalDays = (blanks, days) => {
 	return totalDays;
 };
 
-export default CalendarDays;
+export default React.memo(CalendarDays);

@@ -21,7 +21,7 @@ const createTaskDummyData = (num) => {
 		return {
 			id: faker.random.number(),
 			task: faker.hacker.phrase(),
-			date: new Date(),
+			date: moment(),
 			isFinished: false,
 		};
 	});
@@ -34,7 +34,11 @@ const getMoment = () => {
 
 const initialState = {
 	Topics: createTopicDummyData(10),
-	currentTopic: null,
+	currentTopic: {
+		id: 0,
+		title: '',
+		Tasks: [],
+	},
 	isTopicModalOpend: false,
 	isTaskModalOpend: false,
 	date: getMoment(),
@@ -87,7 +91,7 @@ const reducer = (state = initialState, action) =>
 					id: faker.random.number(),
 					task: action.data.inputA,
 					// Date Picker로 바꿔도 됨
-					date: action.data.day,
+					date: action.data.day.clone(),
 					isFinished: false,
 				});
 				draft.currentTopic = topic;
