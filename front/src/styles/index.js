@@ -76,7 +76,10 @@ export const useContainerStyles = makeStyles((theme) => ({
 	root: {
 		backgroundColor: "#343a40",
 		height: "calc(100vh - 64px)",
-		overflow: "hidden",
+		overflow: "scroll",
+		"&::-webkit-scrollbar": {
+			width: "0px",
+		},
 	},
 }));
 
