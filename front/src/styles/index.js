@@ -122,6 +122,7 @@ export const useModalStyles = makeStyles((theme) => ({
 export const useTableButtonStyles = makeStyles((theme) => ({
 	root: {
 		minWidth: "0px",
+		padding: "6px 16px",
 	},
 }));
 
