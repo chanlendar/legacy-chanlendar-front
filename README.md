@@ -14,7 +14,8 @@ Check List
 -   [x] implement a function that calendar shows this month
 -   [x] implement a function that can render previous and next month to the calendar if click buttons
 -   [x] implement a days of month click event
--   [x] separate components into folder by function.
+-   [x] separate components into folder by function
+-   [ ] implement calendar/task mode
 
 ![createTopicAndLookUp](https://user-images.githubusercontent.com/42995061/92151292-dc14b280-ee5b-11ea-84ad-bf3736ef99ab.gif)
 create Topic and look up
