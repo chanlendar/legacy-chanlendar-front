@@ -1,12 +1,11 @@
 import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { TableRow, TableCell, Button } from "@material-ui/core";
+import { TableRow, TableCell } from "@material-ui/core";
 import moment from "moment";
 import { CHANGE_DAY_EVENT } from "../../../reducers/topic";
-import { useTableButtonStyles } from "../../../styles";
+import { CustomButton } from "../../../styles";
 
 function CalendarDays() {
-	const buttonStyles = useTableButtonStyles();
 	const dispatch = useDispatch();
 
 	const onClick = useCallback(
@@ -27,7 +26,6 @@ function CalendarDays() {
 	const days = getDaysAllInOne(
 		compareDate,
 		compareDay,
-		buttonStyles,
 		onClick,
 		monthTasks,
 	);
@@ -35,10 +33,10 @@ function CalendarDays() {
 	return <>{days}</>;
 }
 
-const getDaysAllInOne = (date, day, buttonStyles, onClick, tasks) => {
+const getDaysAllInOne = (date, day, onClick, tasks) => {
 	const firstDay = firstDayOfMonth(date);
 	const blanks = fillFirstDateOfMonth(firstDay);
-	const days = getDays(date, day, buttonStyles, onClick, tasks);
+	const days = getDays(date, day, onClick, tasks);
 	const totalDays = getTotalDays(blanks, days);
 
 	return totalDays;
@@ -69,11 +67,10 @@ const isSame = (date, tasks) => {
 	return buttonVariant;
 };
 
-// isSelectedDay 도 만들어야 될듯
 const isSelectedDay = (selectedDay, day) => {
 	return selectedDay.isSame(day, "day") ? "contained" : undefined;
 };
-const getDays = (date, day, buttonStyles, onClick, tasks) => {
+const getDays = (date, day, onClick, tasks) => {
 	const numberOfDays = date.daysInMonth();
 	const selectDay = day.clone();
 	const days = Array(numberOfDays)
@@ -84,13 +81,12 @@ const getDays = (date, day, buttonStyles, onClick, tasks) => {
 				isSame(date.set("date", i + 1), tasks);
 			return (
 				<TableCell key={"days" + i} align="center">
-					<Button
-						classes={{ root: buttonStyles.root }}
+					<CustomButton
 						onClick={onClick(i + 1)}
 						variant={variant}
 					>
 						{i + 1}
-					</Button>
+					</CustomButton>
 				</TableCell>
 			);
 		});

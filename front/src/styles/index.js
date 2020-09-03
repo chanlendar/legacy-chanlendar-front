@@ -1,4 +1,4 @@
-import { Tooltip, Paper } from "@material-ui/core";
+import { Tooltip, Paper, Button } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 /**
@@ -119,12 +119,21 @@ export const useModalStyles = makeStyles((theme) => ({
 /**
  * Table-Button Styles
  */
-export const useTableButtonStyles = makeStyles((theme) => ({
+export const CustomButton = withStyles({
 	root: {
 		minWidth: "0px",
-		padding: "6px 16px",
+		padding: "6px 14px",
 	},
-}));
+	outlined: {
+		padding: "5px 13px",
+	}
+})(Button);
+// makeStyles((theme) => ({
+// 	root: {
+// 		minWidth: "0px",
+// 		padding: "7px 17px",
+// 	},
+// }));
 
 /**
  * Task Styles
