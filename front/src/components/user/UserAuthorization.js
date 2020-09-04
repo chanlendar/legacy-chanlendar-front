@@ -9,8 +9,8 @@ function UserAuthorization() {
 
 	return (
 		<>
-			{isLogInOpend && <LogIn setLogIn={setLogInFalse} />}
-			{!isLogInOpend && <SignUp setLogIn={setLogInTrue} />}
+			{isLogInOpend && <LogIn setLogIn={setLogInFalse} isOpend={isLogInOpend} />}
+			{!isLogInOpend && <SignUp setLogIn={setLogInTrue} isOpend={!isLogInOpend} />}
 		</>
 	);
 }
