@@ -126,7 +126,7 @@ export const CustomButton = withStyles({
 	},
 	outlined: {
 		padding: "5px 13px",
-	}
+	},
 })(Button);
 // makeStyles((theme) => ({
 // 	root: {
@@ -144,6 +144,20 @@ export const useTaskStyles = makeStyles((theme) => ({
 	},
 	notFinished: {
 		opacity: "1",
+	},
+}));
+
+/**
+ * Authorization Styles
+ */
+export const useAuthStyles = makeStyles((theme) => ({
+	container: {
+		width: "75%",
+		margin: "0 auto",
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center",
+		minHeight: "100vh",
 	},
 }));
 
