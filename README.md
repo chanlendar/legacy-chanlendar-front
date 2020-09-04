@@ -17,9 +17,13 @@ Check List
 -   [x] separate components into folder by function
 -   [ ] implement calendar/task mode
 
+---
+
 Refactoring
 
 -   [ ] change name OpenAndClose to Multiple In hooks
+
+---
 
 ![createTopicAndLookUp](https://user-images.githubusercontent.com/42995061/92151292-dc14b280-ee5b-11ea-84ad-bf3736ef99ab.gif)
 create Topic and look up
