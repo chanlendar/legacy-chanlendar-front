@@ -16,6 +16,7 @@ Check List
 -   [x] implement a days of month click event
 -   [x] separate components into folder by function
 -   [ ] implement calendar/task mode
+-   [ ] display an illust when task list is empty
 
 ---
 
