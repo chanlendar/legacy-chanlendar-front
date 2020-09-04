@@ -1,32 +1,12 @@
-import React from "react";
-import Grid from "@material-ui/core/Grid";
+import React, { useState } from "react";
 
-import Topics from "./topic/Topics";
-import Menu from "./menu/Menu";
-import Content from "./content/Content";
-
-import { useGridStyles } from '../styles';
+import AppContent from "./AppContent";
+import UserAuthorization from "./user/UserAuthorization";
 
 function AppLayout() {
-	const gridStyles = useGridStyles();
+	const [isAuthenticated, setAuth] = useState(false);
 
-	return (
-		<Grid container direction="row">
-			<Grid item>
-				<Topics></Topics>
-			</Grid>
-			<Grid item className={gridStyles.item}>
-				<Grid container item direction="column">
-					<Grid item>
-						<Menu></Menu>
-					</Grid>
-					<Grid item>
-						<Content></Content>
-					</Grid>
-				</Grid>
-			</Grid>
-		</Grid>
-	);
+	return isAuthenticated ? <AppContent /> : <UserAuthorization />;
 }
 
 export default AppLayout;

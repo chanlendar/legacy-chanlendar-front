@@ -11,6 +11,20 @@ export const useInput = (state) => {
 	return [input, onInputChange, setInput];
 };
 
+export const useBoolean = (state) => {
+	const [input, setInput] = useState(state);
+
+	const onInputTrue = () => {
+		setInput(true);
+	}
+
+	const onInputFalse = () => {
+		setInput(false);
+	}
+
+	return [input, onInputTrue, onInputFalse];
+}
+
 export const useOpenAndCloseEvent = (openEventType, closeEventType) => {
 	const dispatch = useDispatch();
 
