@@ -2,14 +2,20 @@ import React from "react";
 
 import { Grow, Button, Grid, TextField, Typography } from "@material-ui/core";
 
+import { useUnSelectStyles } from "../../styles";
 import knifeGirl from "../../images/knife-girl.svg";
 import Illust from "./Illust";
 
 function LogIn({ setLogIn, isOpend }) {
+	const unSelectStyles = useUnSelectStyles();
 	return (
 		<Grow in={isOpend} timeout={1000}>
 			<Grid container direction="column" spacing={3}>
-				<Grid item style={{ textAlign: "-webkit-center" }}>
+				<Grid
+					item
+					style={{ textAlign: "-webkit-center" }}
+					className={unSelectStyles.unselectable}
+				>
 					<Illust src={knifeGirl} />
 				</Grid>
 				<Grid item>

@@ -165,6 +165,19 @@ export const useAuthStyles = makeStyles((theme) => ({
 }));
 
 /**
+ * Unselect Styles
+ */
+export const useUnSelectStyles = makeStyles((theme) => ({
+	unselectable: {
+		MozUserSelect: "none",
+		WebkitUserSelect: "none",
+		msUserSelect: "none",
+		userSelect: "none",
+		pointerEvents: "none",
+	},
+}));
+
+/**
  * CustomTooltip
  * Tooltips component 필요
  */
