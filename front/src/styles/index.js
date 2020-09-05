@@ -152,12 +152,15 @@ export const useTaskStyles = makeStyles((theme) => ({
  */
 export const useAuthStyles = makeStyles((theme) => ({
 	container: {
-		width: "75%",
+		width: "50%",
 		margin: "0 auto",
 		display: "flex",
 		justifyContent: "center",
 		alignItems: "center",
 		minHeight: "100vh",
+	},
+	table: {
+		backgroundColor: "#495057",
 	},
 }));
 

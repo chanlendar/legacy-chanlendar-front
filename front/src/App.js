@@ -13,10 +13,21 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
-	const darkMode = createMuiTheme({
+	const darkTheme = createMuiTheme({
+		props: {
+			MuiTypography: {
+				variantMapping: {
+					body1: "div",
+					body2: "p",
+				},
+			},
+		},
 		overrides: {
 			MuiTypography: {
-				body2: {
+				colorTextPrimary: {
+					color: "#f8f9fa",
+				},
+				colorTextSecondary: {
 					color: "#adb5bd",
 				},
 			},
@@ -26,7 +37,7 @@ function App() {
 		},
 	});
 	return (
-		<ThemeProvider theme={darkMode}>
+		<ThemeProvider theme={darkTheme}>
 			<GlobalStyle />
 			<AppLayout />
 		</ThemeProvider>
