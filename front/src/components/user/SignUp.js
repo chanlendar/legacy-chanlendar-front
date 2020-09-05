@@ -23,40 +23,19 @@ function SignUp({ setLogIn, isOpend }) {
 						회원 가입
 					</Typography>
 				</Grid>
-				<Grid container item alignItems="center" justify="space-around">
-					<Grid item xs={3}>
-						<Typography variant="body2" align="center" color="textPrimary">
-							닉네임
-						</Typography>
-					</Grid>
-					<Grid item xs={9}>
-						<TextField fullWidth variant="outlined" label="NICKNAME" />
-					</Grid>
+				<Grid item>
+					<TextField fullWidth variant="outlined" label="NICKNAME" />
 				</Grid>
-				<Grid container item alignItems="center" justify="space-around">
-					<Grid item xs={3}>
-						<Typography variant="body2" align="center" color="textPrimary">
-							이메일
-						</Typography>
-					</Grid>
-					<Grid item xs={9}>
-						<TextField fullWidth variant="outlined" label="EMAIL" />
-					</Grid>
+				<Grid item>
+					<TextField fullWidth variant="outlined" label="EMAIL" />
 				</Grid>
-				<Grid container item alignItems="center" justify="space-around">
-					<Grid item xs={3}>
-						<Typography variant="body2" align="center" color="textPrimary">
-							비밀번호
-						</Typography>
-					</Grid>
-					<Grid item xs={9}>
-						<TextField
-							fullWidth
-							variant="outlined"
-							label="PASSWORD"
-							type="password"
-						/>
-					</Grid>
+				<Grid item>
+					<TextField
+						fullWidth
+						variant="outlined"
+						label="PASSWORD"
+						type="password"
+					/>
 				</Grid>
 				<Grid container item justify="flex-end" spacing={1}>
 					<Grid item>
