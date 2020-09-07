@@ -16,13 +16,8 @@ function* watchSignUp() {
 
 function* signUp(action) {
 	try {
-		delay(500);
-		// const result = call(signUpAPI, action.data);
-		const result = { data: "잘 됐읍니다." };
-		yield put({
-			type: SIGN_UP_USER_SUCCESS,
-			data: result.data,
-		});
+		yield call(signUpAPI, action.data);
+		yield put({ type: SIGN_UP_USER_SUCCESS });
 	} catch (error) {
 		console.log("에러났슴");
 		console.log(error);
