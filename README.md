@@ -2,11 +2,6 @@
 
 ## Front
 
-Refactoring
-
--   [ ] change name OpenAndClose to Multiple In hooks
--   [ ] must have change styles architecuture widely
-
 ---
 
 ![login](https://user-images.githubusercontent.com/42995061/92310504-1b710980-efea-11ea-99ee-009ca15b6dce.png)

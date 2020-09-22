@@ -6,7 +6,7 @@ import React from "react";
 import { Container, Button } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 
-import { useInput, useOpenAndCloseEvent } from "hooks";
+import { useInput, useMultipleEvents } from "hooks";
 import { useContainerStyles } from "styles/content";
 import {
 	OPEN_TASK_MODAL_EVENT,
@@ -23,7 +23,7 @@ function Content() {
 	const day = useSelector((state) => state.topic.day);
 
 	const [inputA, onInputAChange] = useInput("");
-	const [onOpenClick, onCloseClick] = useOpenAndCloseEvent(
+	const [onOpenClick, onCloseClick] = useMultipleEvents(
 		OPEN_TASK_MODAL_EVENT,
 		CLOSE_TASK_MODAL_EVENT,
 	);

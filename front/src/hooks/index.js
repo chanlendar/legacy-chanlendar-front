@@ -16,16 +16,16 @@ export const useBoolean = (state) => {
 
 	const onInputTrue = () => {
 		setInput(true);
-	}
+	};
 
 	const onInputFalse = () => {
 		setInput(false);
-	}
+	};
 
 	return [input, onInputTrue, onInputFalse];
-}
+};
 
-export const useOpenAndCloseEvent = (openEventType, closeEventType) => {
+export const useMultipleEvents = (openEventType, closeEventType) => {
 	const dispatch = useDispatch();
 
 	const openEvent = (e) => {

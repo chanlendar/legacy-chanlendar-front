@@ -7,7 +7,7 @@ import {
 	CLOSE_TOPIC_MODAL_EVENT,
 	ADD_TOPIC_EVENT,
 } from "reducers/topic";
-import { useOpenAndCloseEvent, useInput } from "hooks";
+import { useMultipleEvents, useInput } from "hooks";
 import TopicModal from "./TopicModal";
 import { useTopicStyles, useTopicButtonStyles, CustomTooltip } from "styles/topic";
 
@@ -26,7 +26,7 @@ function PlusButton() {
 		setInput("");
 	};
 
-	const [onOpenEvent, onCloseEvent] = useOpenAndCloseEvent(
+	const [onOpenEvent, onCloseEvent] = useMultipleEvents(
 		OPEN_TOPIC_MODAL_EVENT,
 		CLOSE_TOPIC_MODAL_EVENT,
 	);
