@@ -1,7 +1,7 @@
 import React from "react";
 
-import { useBoolean } from "../../hooks";
-import { useAuthStyles } from "../../styles";
+import { useBoolean } from "hooks";
+import { useAuthStyles } from "styles/user";
 import SignUp from "./SignUp";
 import LogIn from "./LogIn";
 

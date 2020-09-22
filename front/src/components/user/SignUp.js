@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Slide, TextField, Grid, Button, Typography, Snackbar } from "@material-ui/core/";
 import styled from "styled-components";
 
-import { useInput } from "../../hooks";
-import { SIGN_UP_USER_REQUEST, SIGN_UP_USER_MESSAGE_CLOSE } from "../../reducers/user";
-import { useUnSelectStyles } from "../../styles";
-import knifeGirl from "../../images/knife-girl.svg";
+import { useInput } from "hooks";
+import { SIGN_UP_USER_REQUEST, SIGN_UP_USER_MESSAGE_CLOSE } from "reducers/user";
+import useUnSelectStyles from "styles/user";
+import knifeGirl from "images/knife-girl.svg";
 import Illust from "./Illust";
 
 const FullWidthForm = styled.form`

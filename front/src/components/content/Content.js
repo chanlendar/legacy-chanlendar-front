@@ -1,18 +1,18 @@
 /**
- * Need to remake the architecture if I need to make a [task]
+ * Need to remake the architecture if I need to make a [weekly, monthly]
  * 2020/08/09
  */
 import React from "react";
 import { Container, Button } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 
-import { useInput, useOpenAndCloseEvent } from "../../hooks";
-import { useContainerStyles } from "../../styles";
+import { useInput, useOpenAndCloseEvent } from "hooks";
+import { useContainerStyles } from "styles/content";
 import {
 	OPEN_TASK_MODAL_EVENT,
 	CLOSE_TASK_MODAL_EVENT,
 	ADD_TASK_EVENT,
-} from "../../reducers/topic";
+} from "reducers/topic";
 import CalendarMode from "./CalendarMode";
 import ContentModal from "./ContentModal";
 

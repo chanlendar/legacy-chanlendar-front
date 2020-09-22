@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, TextField } from "@material-ui/core";
 
-import { useModalStyles } from "../../styles";
+import useModalStyles from "styles/CustomModal";
 import CustomModal from "../CustomModal";
 
 function ContentModal({ isOpend, onCloseClick, onInputChange, onCreateClick }) {

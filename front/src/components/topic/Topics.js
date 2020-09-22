@@ -2,17 +2,16 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Grid, Paper } from "@material-ui/core";
 
-import { useTopicsStyles } from '../../styles';
+import { useTopicsStyles } from "styles/topic";
 import Topic from "./Topic";
 import PlusButton from "./PlusButton";
-
 
 function Topics() {
 	const topicsStyles = useTopicsStyles();
 	const topics = useSelector((state) => state.topic.Topics);
 	const main = {
-		id: 'main',
-		title: 'Main',
+		id: "main",
+		title: "Main",
 	};
 	return (
 		<Paper square className={topicsStyles.root}>

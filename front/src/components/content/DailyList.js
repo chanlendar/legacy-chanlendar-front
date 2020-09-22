@@ -11,8 +11,8 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 
-import { FINISH_TASK_EVENT, NOT_FINISH_TASK_EVENT } from "../../reducers/topic";
-import { useCardStyles, useTaskStyles, CustomPaper } from "../../styles";
+import { FINISH_TASK_EVENT, NOT_FINISH_TASK_EVENT } from "reducers/topic";
+import { useCardStyles, useTaskStyles, CustomPaper } from "styles/content";
 
 function DailyList({ topic }) {
 	const cardStyles = useCardStyles();

@@ -8,8 +8,8 @@ function Calendar() {
 	return (
 		<TableContainer>
 			<Table>
-				<CalendarHeader></CalendarHeader>
-				<CalendarContents></CalendarContents>
+				<CalendarHeader />
+				<CalendarContents />
 			</Table>
 		</TableContainer>
 	);

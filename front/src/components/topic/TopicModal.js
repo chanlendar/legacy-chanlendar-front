@@ -2,7 +2,7 @@ import React from "react";
 import { Button, TextField } from "@material-ui/core";
 
 import CustomModal from "../CustomModal";
-import { useModalStyles } from "../../styles";
+import useModalStyles from "styles/CustomModal";
 
 function TopicModal({ isOpend, onCreateClick, onCloseEvent, onInputChange }) {
 	const modalStyles = useModalStyles();
@@ -30,7 +30,9 @@ function TopicModal({ isOpend, onCreateClick, onCloseEvent, onInputChange }) {
 
 const buttons = (modalStyles, onCreateClick, onCloseEvent) => {
 	return (
-		<div className={modalStyles.buttons}>
+		<div
+			className={modalStyles.buttons}
+		>
 			<Button
 				variant="outlined"
 				onClick={onCloseEvent}

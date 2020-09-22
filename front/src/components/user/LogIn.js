@@ -2,8 +2,8 @@ import React from "react";
 
 import { Grow, Button, Grid, TextField, Typography } from "@material-ui/core";
 
-import { useUnSelectStyles } from "../../styles";
-import knifeGirl from "../../images/knife-girl.svg";
+import useUnSelectStyles from "styles/user";
+import knifeGirl from "images/knife-girl.svg";
 import Illust from "./Illust";
 
 function LogIn({ setLogIn, isOpend }) {

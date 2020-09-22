@@ -6,7 +6,7 @@ import CalendarDays from "./CalendarDays";
 function CalendarContent() {
 	return (
 		<TableBody>
-			<CalendarDays></CalendarDays>
+			<CalendarDays />
 		</TableBody>
 	);
 }

@@ -2,8 +2,8 @@ import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { TableRow, TableCell } from "@material-ui/core";
 import moment from "moment";
-import { CHANGE_DAY_EVENT } from "../../../reducers/topic";
-import { CustomButton } from "../../../styles";
+import { CHANGE_DAY_EVENT } from "reducers/topic";
+import { CustomButton } from "styles/content";
 
 function CalendarDays() {
 	const dispatch = useDispatch();
@@ -23,12 +23,7 @@ function CalendarDays() {
 	const tasks = useSelector((state) => state.topic.currentTopic?.Tasks);
 	const monthTasks = tasks.filter((v) => v.date.isSame(date, "month"));
 
-	const days = getDaysAllInOne(
-		compareDate,
-		compareDay,
-		onClick,
-		monthTasks,
-	);
+	const days = getDaysAllInOne(compareDate, compareDay, onClick, monthTasks);
 
 	return <>{days}</>;
 }
@@ -81,10 +76,7 @@ const getDays = (date, day, onClick, tasks) => {
 				isSame(date.set("date", i + 1), tasks);
 			return (
 				<TableCell key={"days" + i} align="center">
-					<CustomButton
-						onClick={onClick(i + 1)}
-						variant={variant}
-					>
+					<CustomButton onClick={onClick(i + 1)} variant={variant}>
 						{i + 1}
 					</CustomButton>
 				</TableCell>

@@ -1,7 +1,7 @@
 import React from "react";
 import { AppBar, Toolbar, Button, ButtonGroup } from "@material-ui/core";
 
-import { useAppBarStyles } from "../../styles";
+import { useAppBarStyles } from "styles/menu";
 
 function Menu() {
 	const appBarStyles = useAppBarStyles();

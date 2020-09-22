@@ -2,7 +2,7 @@ import React from "react";
 
 import { Modal, Fade, Typography } from "@material-ui/core";
 
-import { useModalStyles } from "../styles";
+import useModalStyles from "styles/CustomModal";
 
 function CustomModal({ title, description, isOpend, onCloseClick, buttons, children }) {
 	const modalStyles = useModalStyles();
