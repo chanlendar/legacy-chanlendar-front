@@ -4,7 +4,6 @@ import Grid from "@material-ui/core/Grid";
 import Topics from "./topic/Topics";
 import Menu from "./menu/Menu";
 import Content from "./content/Content";
-
 import { useGridStyles } from "../styles";
 
 function AppContent() {
