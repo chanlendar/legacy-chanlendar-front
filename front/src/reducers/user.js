@@ -8,10 +8,13 @@ export const LOG_IN_USER_REQUEST = "LOG_IN_USER_REQUEST";
 export const LOG_IN_USER_SUCCESS = "LOG_IN_USER_SUCCESS";
 export const LOG_IN_USER_FAILURE = "LOG_IN_USER_FAILURE";
 export const AUTHENTICATE_USER_SUCCESS = "AUTHENTICATE_USER_SUCCESS";
+export const LOG_IN_WINDOW_OPEN = "LOG_IN_WINDOW_OPEN";
+export const SIGN_UP_WINDOW_OPEN = "SIGN_UP_WINDOW_OPEN";
 
 const initialState = {
 	profile: {},
 	tokens: null,
+	isLogInOpened: true,
 	isAuthenticated: false,
 	signUpLoading: false,
 	signUpDone: false,
@@ -63,6 +66,13 @@ const reducer = (state = initialState, action) =>
 				break;
 			case AUTHENTICATE_USER_SUCCESS:
 				draft.isAuthenticated = true;
+				break;
+			case LOG_IN_WINDOW_OPEN:
+				draft.isLogInOpened = true;
+				break;
+			case SIGN_UP_WINDOW_OPEN:
+				draft.isLogInOpened = false;
+				break;
 		}
 	});
 
