@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useCookies } from "react-cookie";
 
 export const useInput = (state) => {
 	const [input, setInput] = useState(state);
@@ -38,10 +37,4 @@ export const useMultipleEvents = (openEventType, closeEventType) => {
 	};
 
 	return [openEvent, closeEvent];
-};
-
-export const useIsCookieExisted = (cookieName) => {
-	const [cookies, setCookie] = useCookies([cookieName]);
-
-	return !!cookies[cookieName];
 };

@@ -1,14 +1,41 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useCookies } from "react-cookie";
+import moment from "moment";
 
-import { useBoolean, useIsCookieExisted } from "hooks";
+import { useBoolean } from "hooks";
+import { AUTHENTICATE_USER_SUCCESS } from "reducers/user";
 import { useAuthStyles } from "styles/user";
 import SignUp from "./SignUp";
 import LogIn from "./LogIn";
 
-function UserAuthorization({ setAuth }) {
-	// 쿠키 존재함 변수로 setAuth 설정
-	const isCookieExisted = useIsCookieExisted("tokens");
-	setAuth(isCookieExisted);
+function UserAuthorization() {
+	const tokens = useSelector((state) => state.user.tokens);
+	const dispatch = useDispatch();
+	const [cookies, setCookie] = useCookies(["refreshToken"]);
+
+	if (tokens) {
+		const accessExpireDays = moment()
+			.add(1, "days")
+			.toDate();
+		const refreshExpireDays = moment()
+			.add(30, "days")
+			.toDate();
+		setCookie("accessToken", tokens.accessToken, {
+			path: "/",
+			expires: accessExpireDays,
+		});
+		setCookie("refreshToken", tokens.refreshToken, {
+			path: "/",
+			expires: refreshExpireDays,
+		});
+
+		dispatch({ type: AUTHENTICATE_USER_SUCCESS });
+	}
+
+	if (!!cookies["refreshToken"]) {
+		dispatch({ type: AUTHENTICATE_USER_SUCCESS });
+	}
 
 	const authStyles = useAuthStyles();
 	const [isLogInOpened, setLogInTrue, setLogInFalse] = useBoolean(true);
