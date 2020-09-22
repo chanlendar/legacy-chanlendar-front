@@ -13,7 +13,6 @@ const initialState = {
 	signUpLoading: false,
 	signUpDone: false,
 	signUpError: null,
-	signUpMsg: false,
 };
 
 const reducer = (state = initialState, action) =>
@@ -30,14 +29,12 @@ const reducer = (state = initialState, action) =>
 			case SIGN_UP_USER_SUCCESS:
 				draft.signUpLoading = false;
 				draft.signUpDone = true;
-				draft.signUpMsg = true;
 				break;
 			case SIGN_UP_USER_FAILURE:
 				draft.signUpLoading = false;
 				draft.signUpError = action.data;
 				break;
 			case SIGN_UP_USER_MESSAGE_CLOSE:
-				draft.signUpMsg = false;
 				draft.signUpDone = false;
 				break;
 		}

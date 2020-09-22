@@ -1,12 +1,14 @@
 import React from "react";
 
-import { useBoolean } from "hooks";
+import { useBoolean, useIsCookieExisted } from "hooks";
 import { useAuthStyles } from "styles/user";
 import SignUp from "./SignUp";
 import LogIn from "./LogIn";
 
 function UserAuthorization({ setAuth }) {
 	// 쿠키 존재함 변수로 setAuth 설정
+	const isCookieExisted = useIsCookieExisted("tokens");
+	setAuth(isCookieExisted);
 
 	const authStyles = useAuthStyles();
 	const [isLogInOpened, setLogInTrue, setLogInFalse] = useBoolean(true);

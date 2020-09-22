@@ -15,7 +15,7 @@ const FullWidthForm = styled.form`
 
 function SignUp({ setLogIn, isOpend }) {
 	const dispatch = useDispatch();
-	const { signUpLoading, signUpDone, signUpMsg } = useSelector((state) => state.user);
+	const { signUpLoading, signUpDone } = useSelector((state) => state.user);
 	const unSelectStyles = useUnSelectStyles();
 
 	const [nickname, onNicknameChange, setNickname] = useInput("");
@@ -56,7 +56,7 @@ function SignUp({ setLogIn, isOpend }) {
 		<Slide in={isOpend} direction="left" timeout={200}>
 			<FullWidthForm onSubmit={onSubmit}>
 				<Snackbar
-					open={signUpMsg}
+					open={signUpDone}
 					onClose={onSnackClose}
 					autoHideDuration={1500}
 					message={"회원 가입에 성공했습니다."}

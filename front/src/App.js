@@ -1,7 +1,6 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { CookiesProvider } from "react-cookie";
 import AppLayout from "./components/AppLayout";
 
 const GlobalStyle = createGlobalStyle`
