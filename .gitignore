@@ -1,4 +1,4 @@
-.vscode
+.idea
 node_modules
 
 # 빌드 관련
