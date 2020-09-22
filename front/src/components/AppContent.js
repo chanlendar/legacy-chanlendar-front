@@ -56,6 +56,4 @@ function AppContent() {
 	);
 }
 
-function tokenRenewal(refreshToken) {}
-
 export default AppContent;
