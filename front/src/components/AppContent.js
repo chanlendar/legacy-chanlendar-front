@@ -8,6 +8,7 @@ import useGridStyles from "styles/AppContent";
 
 function AppContent() {
 	const gridStyles = useGridStyles();
+
 	return (
 		<Grid container direction="row">
 			<Grid item>

@@ -9,7 +9,7 @@ import useUnSelectStyles from "styles/user";
 import knifeGirl from "images/knife-girl.svg";
 import Illust from "./Illust";
 
-function LogIn({ setLogIn, isOpend }) {
+function LogIn({ setLogIn, isOpened }) {
 	const unSelectStyles = useUnSelectStyles();
 
 	const dispatch = useDispatch();
@@ -31,7 +31,7 @@ function LogIn({ setLogIn, isOpend }) {
 	);
 
 	return (
-		<Grow in={isOpend} timeout={1000}>
+		<Grow in={isOpened} timeout={1000}>
 			<Grid container direction="column" spacing={3}>
 				<Grid
 					item
