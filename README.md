@@ -2,24 +2,6 @@
 
 ## Front
 
-Check List
-
--   [x] need to display the information when the topic clicked
--   [x] need to add task in current topic
--   [x] need to make the calendar component
--   [x] need to abstract the modal
--   [x] need to separate calendar/task mode
--   [x] styling with calendar
--   [x] styling with modal
--   [x] implement a function that calendar shows this month
--   [x] implement a function that can render previous and next month to the calendar if click buttons
--   [x] implement a days of month click event
--   [x] separate components into folder by function
--   [ ] implement calendar/task mode
--   [ ] display an illust when task list is empty
-
----
-
 Refactoring
 
 -   [ ] change name OpenAndClose to Multiple In hooks
