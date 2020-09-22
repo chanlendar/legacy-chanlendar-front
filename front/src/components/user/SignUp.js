@@ -22,9 +22,12 @@ function SignUp({ setLogIn, isOpend }) {
 	const [email, onEmailChange, setEmail] = useInput("");
 	const [password, onPasswordChange, setPassword] = useInput("");
 
-	const onSnackClose = useCallback((e) => {
-		dispatch({ type: SIGN_UP_USER_MESSAGE_CLOSE });
-	});
+	const onSnackClose = useCallback(
+		(e) => {
+			dispatch({ type: SIGN_UP_USER_MESSAGE_CLOSE });
+		},
+		[dispatch],
+	);
 
 	const onSubmit = useCallback(
 		(e) => {
@@ -38,7 +41,7 @@ function SignUp({ setLogIn, isOpend }) {
 				},
 			});
 		},
-		[nickname, email, password],
+		[nickname, email, password, dispatch],
 	);
 
 	useEffect(() => {
@@ -47,7 +50,7 @@ function SignUp({ setLogIn, isOpend }) {
 			setEmail("");
 			setPassword("");
 		}
-	}, [signUpDone]);
+	}, [signUpDone, setNickname, setEmail, setPassword]);
 
 	return (
 		<Slide in={isOpend} direction="left" timeout={200}>
@@ -105,7 +108,6 @@ function SignUp({ setLogIn, isOpend }) {
 					<Grid container item justify="flex-end" spacing={1}>
 						<Grid item>
 							<Button
-								color="secondary"
 								variant="outlined"
 								onClick={setLogIn}
 								disabled={signUpLoading}
