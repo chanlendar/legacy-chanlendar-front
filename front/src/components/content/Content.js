@@ -19,6 +19,8 @@ import ContentModal from "./ContentModal";
 function Content() {
 	const containerStyles = useContainerStyles();
 	const { currentTopic, isTaskModalOpend } = useSelector((state) => state.topic);
+
+	const isTopicExisted = !!currentTopic.title;
 	// Date Picker로 바꿔도 됨
 	const day = useSelector((state) => state.topic.day);
 
@@ -43,6 +45,7 @@ function Content() {
 					style={{ marginTop: "44px" }}
 					variant="outlined"
 					onClick={onOpenClick}
+					disabled={!isTopicExisted}
 				>
 					생성
 				</Button>

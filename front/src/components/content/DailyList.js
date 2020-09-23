@@ -9,7 +9,6 @@ import {
 	ListItemText,
 } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
-import moment from "moment";
 
 import { FINISH_TASK_EVENT, NOT_FINISH_TASK_EVENT } from "reducers/topic";
 import { useCardStyles, useTaskStyles, CustomPaper } from "styles/content";

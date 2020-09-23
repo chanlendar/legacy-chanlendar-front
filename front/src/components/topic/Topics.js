@@ -16,8 +16,6 @@ function Topics() {
 	return (
 		<Paper square className={topicsStyles.root}>
 			<Grid container direction="column" alignItems="center">
-				{/* MainTopic 만들기 */}
-				<Topic topic={main} key={main.id} />
 				{topics.map((v) => (
 					<Topic topic={v} key={v.id} />
 				))}

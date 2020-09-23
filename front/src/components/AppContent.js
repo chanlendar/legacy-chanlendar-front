@@ -10,8 +10,7 @@ import Menu from "components/menu/Menu";
 import Content from "components/content/Content";
 import useGridStyles from "styles/AppContent";
 
-import { GET_TOPICS_REQUEST, TRANSFORM_TASK } from "reducers/topic";
-import { useMultipleEvents } from "hooks";
+import { GET_TOPICS_REQUEST } from "reducers/topic";
 
 function AppContent() {
 	const gridStyles = useGridStyles();

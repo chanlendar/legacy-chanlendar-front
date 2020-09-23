@@ -1,19 +1,6 @@
-import produce, { current } from "immer";
+import produce from "immer";
 import faker from "faker";
 import moment from "moment";
-
-const createTopicDummyData = (num) => {
-	const topics = new Array(num).fill(null);
-	const topicArray = topics.map(() => {
-		return {
-			id: faker.random.number(),
-			title: faker.name.firstName(),
-			Tasks: createTaskDummyData(faker.random.number(8)),
-		};
-	});
-
-	return topicArray;
-};
 
 const createTaskDummyData = (num) => {
 	const tasks = new Array(num).fill(null);
