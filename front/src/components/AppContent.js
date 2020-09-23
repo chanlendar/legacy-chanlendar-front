@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
 import Grid from "@material-ui/core/Grid";
 import moment from "moment";
@@ -9,12 +10,22 @@ import Menu from "components/menu/Menu";
 import Content from "components/content/Content";
 import useGridStyles from "styles/AppContent";
 
+import { GET_TOPICS_REQUEST, TRANSFORM_TASK } from "reducers/topic";
+import { useMultipleEvents } from "hooks";
+
 function AppContent() {
 	const gridStyles = useGridStyles();
-	const [cookies, setCookies] = useCookies(["accessToken", "refreshToken"]);
-
+	const [cookies, setCookies, removeCookies] = useCookies([
+		"accessToken",
+		"refreshToken",
+	]);
+	const dispatch = useDispatch();
 	useEffect(() => {
-		tokenRenewal(cookies, setCookies);
+		tokenRenewal(cookies, setCookies, removeCookies);
+		// get topics (containing tasks)
+		dispatch({ type: GET_TOPICS_REQUEST, data: cookies.accessToken });
+
+		// get myinfo (profile: ex - email, nickname)
 	}, []);
 
 	return (
@@ -36,11 +47,12 @@ function AppContent() {
 	);
 }
 
-const tokenRenewal = async (cookies, setCookies) => {
+const tokenRenewal = async (cookies, setCookies, removeCookies) => {
 	const result = await axios.post("/jwt/tokens", {
 		refreshToken: cookies.refreshToken,
 	});
-
+	removeCookies("accessToken");
+	removeCookies("refreshToken");
 	setCookies("accessToken", result.data.accessToken, {
 		path: "/",
 		expires: moment()

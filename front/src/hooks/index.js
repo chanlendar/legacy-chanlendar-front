@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useCookies } from "react-cookie";
 
 export const useInput = (state) => {
 	const [input, setInput] = useState(state);
@@ -25,16 +26,26 @@ export const useBoolean = (state) => {
 	return [input, onInputTrue, onInputFalse];
 };
 
-export const useMultipleEvents = (openEventType, closeEventType) => {
+export const useMultipleEvents = (firstEvent, secondEvent, firstData, secondData) => {
 	const dispatch = useDispatch();
 
-	const openEvent = (e) => {
-		dispatch({ type: openEventType });
+	const firstEventDispatch = () => {
+		dispatch({ type: firstEvent, data: firstData });
 	};
 
-	const closeEvent = (e) => {
-		dispatch({ type: closeEventType });
+	const secondEventDispatch = () => {
+		dispatch({ type: secondEvent, data: secondData });
 	};
 
-	return [openEvent, closeEvent];
+	return [firstEventDispatch, secondEventDispatch];
+};
+
+export const useAccessTokenRequest = (requestType) => {
+	const dispatch = useDispatch();
+
+	const [cookies] = useCookies(["accessToken"]);
+
+	return () => {
+		dispatch({ type: requestType, data: { accessToken: cookies.accessToken } });
+	};
 };

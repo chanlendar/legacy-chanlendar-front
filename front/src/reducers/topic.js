@@ -1,4 +1,4 @@
-import produce from "immer";
+import produce, { current } from "immer";
 import faker from "faker";
 import moment from "moment";
 
@@ -21,7 +21,7 @@ const createTaskDummyData = (num) => {
 		return {
 			id: faker.random.number(),
 			task: faker.hacker.phrase(),
-			date: moment(),
+			taskDate: moment(),
 			isFinished: false,
 		};
 	});
@@ -33,16 +33,19 @@ const getMoment = () => {
 };
 
 const initialState = {
-	Topics: createTopicDummyData(10),
+	Topics: [],
 	currentTopic: {
 		id: 0,
-		title: '',
+		title: "",
 		Tasks: [],
 	},
 	isTopicModalOpend: false,
 	isTaskModalOpend: false,
 	date: getMoment(),
 	day: getMoment(),
+	getTopicsLoading: false,
+	getTopicsDone: false,
+	getTopicsError: null,
 };
 
 export const ADD_TOPIC_EVENT = "ADD_TOPIC_EVENT";
@@ -61,13 +64,18 @@ export const ADD_MONTH_EVENT = "ADD_MONTH_EVENT";
 export const SUBTRACT_MONTH_EVENT = "SUBTRACT_MONTH_EVENT";
 export const CHANGE_DAY_EVENT = "CHANGE_DAY_EVENT";
 
+export const GET_TOPICS_REQUEST = "GET_TOPICS_REQUEST";
+export const GET_TOPICS_SUCCESS = "GET_TOPICS_SUCCESS";
+export const GET_TOPICS_FAILURE = "GET_TOPICS_FAILURE";
+export const TRANSFORM_TASK = "TRANSFORM_TASK";
+
 const reducer = (state = initialState, action) =>
 	produce(state, (draft) => {
 		switch (action.type) {
 			// TOPIC EVENTS ***START***
 			/**
 			 * Add saga later to call CLOSE_TOPIC_MODAL_EVENT
-			 * When this event executed succesfully
+			 * Whenever this event executed succesfully
 			 */
 			case ADD_TOPIC_EVENT:
 				const idx = draft.Topics.push({
@@ -133,6 +141,24 @@ const reducer = (state = initialState, action) =>
 				break;
 			case CHANGE_DAY_EVENT:
 				draft.day = draft.date.clone().set("D", action.data);
+				break;
+			// GET TOPICS
+			case GET_TOPICS_REQUEST:
+				draft.getTopicsLoading = true;
+				draft.getTopicsDone = false;
+				draft.getTopicsError = null;
+				break;
+			case GET_TOPICS_SUCCESS:
+				draft.getTopicsLoading = false;
+				draft.getTopicsDone = true;
+				draft.Topics = action.data;
+				break;
+			case GET_TOPICS_FAILURE:
+				draft.getTopicsLoading = false;
+				draft.getTopicsError = action.data;
+				break;
+			case TRANSFORM_TASK:
+				console.log(current(draft));
 				break;
 			default:
 				break;

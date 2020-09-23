@@ -21,7 +21,7 @@ function CalendarDays() {
 	const compareDate = date.clone();
 	const compareDay = day.clone();
 	const tasks = useSelector((state) => state.topic.currentTopic?.Tasks);
-	const monthTasks = tasks.filter((v) => v.date.isSame(date, "month"));
+	const monthTasks = tasks.filter((v) => v.taskDate.isSame(date, "month"));
 
 	const days = getDaysAllInOne(compareDate, compareDay, onClick, monthTasks);
 

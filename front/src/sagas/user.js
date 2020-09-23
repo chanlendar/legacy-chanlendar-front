@@ -7,7 +7,7 @@ import {
 	LOG_IN_USER_REQUEST,
 	LOG_IN_USER_SUCCESS,
 	LOG_IN_USER_FAILURE,
-} from "../reducers/user";
+} from "reducers/user";
 
 export default function* userSaga() {
 	yield all([fork(watchSignUp), fork(watchLogIn)]);

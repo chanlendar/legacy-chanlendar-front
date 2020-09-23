@@ -29,7 +29,7 @@ function DailyList({ topic }) {
 	const day = useSelector((state) => state.topic.day).format("YYYY-MM-DD");
 	const subheaderText = `${day} - Daily List`;
 	const tasksOfday = topic.Tasks.filter((v) => {
-		return moment(v.date).isSame(day, "day");
+		return v.taskDate.isSame(day, "day");
 	});
 
 	return (
