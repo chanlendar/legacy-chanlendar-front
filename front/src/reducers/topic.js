@@ -1,5 +1,4 @@
 import produce from "immer";
-import faker from "faker";
 import moment from "moment";
 
 const getMoment = () => {
@@ -23,6 +22,9 @@ const initialState = {
 	addTopicLoading: false,
 	addTopicDone: false,
 	addTopicError: null,
+	addTaskLoading: false,
+	addTaskDone: false,
+	addTaskError: null,
 };
 
 export const ADD_TOPIC_REQUEST = "ADD_TOPIC_REQUEST";
@@ -31,7 +33,10 @@ export const ADD_TOPIC_FAILURE = "ADD_TOPIC_FAILURE";
 
 export const CHANGE_TOPIC_EVENT = "CHANGE_TOPIC_EVENT";
 
-export const ADD_TASK_EVENT = "ADD_TASK_EVENT";
+export const ADD_TASK_REQUEST = "ADD_TASK_REQUEST";
+export const ADD_TASK_SUCCESS = "ADD_TASK_SUCCESS";
+export const ADD_TASK_FAILURE = "ADD_TASK_FAILURE";
+
 export const FINISH_TASK_EVENT = "FINISH_TASK_EVENT";
 export const NOT_FINISH_TASK_EVENT = "NOT_FINISH_TASK_EVENT";
 
@@ -47,16 +52,12 @@ export const CHANGE_DAY_EVENT = "CHANGE_DAY_EVENT";
 export const GET_TOPICS_REQUEST = "GET_TOPICS_REQUEST";
 export const GET_TOPICS_SUCCESS = "GET_TOPICS_SUCCESS";
 export const GET_TOPICS_FAILURE = "GET_TOPICS_FAILURE";
-export const TRANSFORM_TASK = "TRANSFORM_TASK";
+export const TRANSFORM_TASKS = "TRANSFORM_TASKS";
 
 const reducer = (state = initialState, action) =>
 	produce(state, (draft) => {
 		switch (action.type) {
 			// TOPIC EVENTS ***START***
-			/**
-			 * Add saga later to call CLOSE_TOPIC_MODAL_EVENT
-			 * Whenever this event executed succesfully
-			 */
 			case ADD_TOPIC_REQUEST:
 				draft.addTopicLoading = true;
 				draft.addTopicDone = false;
@@ -64,13 +65,9 @@ const reducer = (state = initialState, action) =>
 				break;
 			case ADD_TOPIC_SUCCESS:
 				const idx = draft.Topics.push(action.data);
-				// CHANGE_TOPIC_EVENT
 				draft.currentTopic = draft.Topics[idx - 1];
-
 				draft.addTopicLoading = false;
 				draft.addTopicDone = true;
-				// CLOSE_TOPIC_MODAL_EVENT -> move this event to saga.
-				draft.isTopicModalOpend = false;
 				break;
 			case ADD_TOPIC_FAILURE:
 				draft.addTopicLoading = false;
@@ -80,20 +77,32 @@ const reducer = (state = initialState, action) =>
 				draft.currentTopic = action.data;
 				break;
 			// TASK EVENTS ***START***
-			case ADD_TASK_EVENT: {
-				// action.data => { inputA, topicId }
-				const topic = draft.Topics.find((t) => t.id === action.data.topicId);
-				topic.Tasks.push({
-					id: faker.random.number(),
-					task: action.data.inputA,
-					// Date Picker로 바꿔도 됨
-					date: action.data.day.clone(),
-					isFinished: false,
-				});
-				draft.currentTopic = topic;
-				draft.isTaskModalOpend = false;
+			case ADD_TASK_REQUEST: {
+				draft.addTaskLoading = true;
+				draft.addTaskDone = false;
+				draft.addTaskError = null;
+				// CLOSE_TASK_MODAL_EVENT로 isTaskModal 닫아주기
+				// draft.isTaskModalOpend = false;
 				break;
 			}
+			case ADD_TASK_SUCCESS:
+				const { topicId, task } = action.data;
+				const taskDateChanged = {
+					...task,
+					taskDate: moment(task.taskDate),
+				};
+
+				const topic = draft.Topics.find((t) => t.id === topicId);
+				topic.Tasks.push(taskDateChanged);
+				draft.currentTopic = topic;
+
+				draft.addTaskLoading = false;
+				draft.addTaskDone = true;
+				break;
+			case ADD_TASK_FAILURE:
+				draft.addTaskLoading = false;
+				draft.addTaskError = action.data;
+				break;
 			// 완료를 하려는 의도와 취소를 하려는 의도는 엄연히 다른 것이기에 구분
 			case FINISH_TASK_EVENT: {
 				const topic = draft.Topics.find((t) => t.id === action.data.topicId);
@@ -145,7 +154,7 @@ const reducer = (state = initialState, action) =>
 				draft.getTopicsLoading = false;
 				draft.getTopicsError = action.data;
 				break;
-			case TRANSFORM_TASK:
+			case TRANSFORM_TASKS:
 				draft.Topics = draft.Topics.map((v) => {
 					v.Tasks = v.Tasks.map((t) => {
 						return { ...t, taskDate: moment(t.taskDate) };

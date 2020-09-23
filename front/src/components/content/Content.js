@@ -5,13 +5,14 @@
 import React from "react";
 import { Container, Button } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
+import { useCookies } from "react-cookie";
 
 import { useInput, useMultipleEvents } from "hooks";
 import { useContainerStyles } from "styles/content";
 import {
 	OPEN_TASK_MODAL_EVENT,
 	CLOSE_TASK_MODAL_EVENT,
-	ADD_TASK_EVENT,
+	ADD_TASK_REQUEST,
 } from "reducers/topic";
 import CalendarMode from "./CalendarMode";
 import ContentModal from "./ContentModal";
@@ -19,12 +20,13 @@ import ContentModal from "./ContentModal";
 function Content() {
 	const containerStyles = useContainerStyles();
 	const { currentTopic, isTaskModalOpend } = useSelector((state) => state.topic);
+	const [cookies] = useCookies();
 
 	const isTopicExisted = !!currentTopic.title;
 	// Date Picker로 바꿔도 됨
 	const day = useSelector((state) => state.topic.day);
 
-	const [inputA, onInputAChange] = useInput("");
+	const [title, onTitleChange, setTitle] = useInput("");
 	const [onOpenClick, onCloseClick] = useMultipleEvents(
 		OPEN_TASK_MODAL_EVENT,
 		CLOSE_TASK_MODAL_EVENT,
@@ -33,9 +35,15 @@ function Content() {
 	const dispatch = useDispatch();
 	const onCreateClick = (e) => {
 		dispatch({
-			type: ADD_TASK_EVENT,
-			data: { inputA, topicId: currentTopic.id, day },
+			type: ADD_TASK_REQUEST,
+			data: {
+				title,
+				topicId: currentTopic.id,
+				day,
+				accessToken: cookies.accessToken,
+			},
 		});
+		setTitle("");
 	};
 
 	return (
@@ -55,7 +63,7 @@ function Content() {
 				isOpend={isTaskModalOpend}
 				onCreateClick={onCreateClick}
 				onCloseClick={onCloseClick}
-				onInputChange={onInputAChange}
+				onInputChange={onTitleChange}
 			/>
 		</div>
 	);
