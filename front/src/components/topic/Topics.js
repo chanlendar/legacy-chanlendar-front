@@ -9,10 +9,7 @@ import PlusButton from "./PlusButton";
 function Topics() {
 	const topicsStyles = useTopicsStyles();
 	const topics = useSelector((state) => state.topic.Topics);
-	const main = {
-		id: "main",
-		title: "Main",
-	};
+
 	return (
 		<Paper square className={topicsStyles.root}>
 			<Grid container direction="column" alignItems="center">
