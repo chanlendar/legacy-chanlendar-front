@@ -1,16 +1,5 @@
 import produce from "immer";
 
-export const SIGN_UP_USER_REQUEST = "SIGN_UP_USER_REQUEST";
-export const SIGN_UP_USER_SUCCESS = "SIGN_UP_USER_SUCCESS";
-export const SIGN_UP_USER_FAILURE = "SIGN_UP_USER_FAILURE";
-export const SIGN_UP_USER_MESSAGE_CLOSE = "SIGN_UP_USER_MESSAGE_CLOSE";
-export const LOG_IN_USER_REQUEST = "LOG_IN_USER_REQUEST";
-export const LOG_IN_USER_SUCCESS = "LOG_IN_USER_SUCCESS";
-export const LOG_IN_USER_FAILURE = "LOG_IN_USER_FAILURE";
-export const AUTHENTICATE_USER_SUCCESS = "AUTHENTICATE_USER_SUCCESS";
-export const LOG_IN_WINDOW_OPEN = "LOG_IN_WINDOW_OPEN";
-export const SIGN_UP_WINDOW_OPEN = "SIGN_UP_WINDOW_OPEN";
-
 const initialState = {
 	profile: {},
 	tokens: null,
@@ -23,6 +12,17 @@ const initialState = {
 	logInDone: false,
 	logInError: null,
 };
+
+export const SIGN_UP_USER_REQUEST = "SIGN_UP_USER_REQUEST";
+export const SIGN_UP_USER_SUCCESS = "SIGN_UP_USER_SUCCESS";
+export const SIGN_UP_USER_FAILURE = "SIGN_UP_USER_FAILURE";
+export const SIGN_UP_USER_MESSAGE_CLOSE = "SIGN_UP_USER_MESSAGE_CLOSE";
+export const LOG_IN_USER_REQUEST = "LOG_IN_USER_REQUEST";
+export const LOG_IN_USER_SUCCESS = "LOG_IN_USER_SUCCESS";
+export const LOG_IN_USER_FAILURE = "LOG_IN_USER_FAILURE";
+export const AUTHENTICATE_USER_SUCCESS = "AUTHENTICATE_USER_SUCCESS";
+export const LOG_IN_WINDOW_OPEN = "LOG_IN_WINDOW_OPEN";
+export const SIGN_UP_WINDOW_OPEN = "SIGN_UP_WINDOW_OPEN";
 
 const reducer = (state = initialState, action) =>
 	produce(state, (draft) => {
