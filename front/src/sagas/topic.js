@@ -7,10 +7,13 @@ import {
 	GET_TOPICS_SUCCESS,
 	GET_TOPICS_FAILURE,
 	TRANSFORM_TASK,
+	ADD_TOPIC_REQUEST,
+	ADD_TOPIC_SUCCESS,
+	ADD_TOPIC_FAILURE,
 } from "reducers/topic";
 
 export default function* topicSaga() {
-	yield all([fork(watchGetTopics)]);
+	yield all([fork(watchGetTopics), fork(watchAddTopic)]);
 }
 
 function* watchGetTopics() {
@@ -23,7 +26,6 @@ function* getTopics(action) {
 		yield put({ type: GET_TOPICS_SUCCESS, data: result.data.topics });
 		yield put({ type: TRANSFORM_TASK });
 	} catch (error) {
-		console.log("키사마와...요와이");
 		yield put({
 			type: GET_TOPICS_FAILURE,
 			data: error.response.data,
@@ -33,4 +35,24 @@ function* getTopics(action) {
 
 function getTopicsAPI(accessToken) {
 	return axios.get("/topics", config(accessToken));
+}
+
+function* watchAddTopic() {
+	yield takeLatest(ADD_TOPIC_REQUEST, addTopic);
+}
+
+function* addTopic(action) {
+	try {
+		const result = yield call(addTopicAPI, action.data);
+		yield put({ type: ADD_TOPIC_SUCCESS, data: result.data });
+	} catch (error) {
+		yield put({
+			type: ADD_TOPIC_FAILURE,
+			data: error.response.data,
+		});
+	}
+}
+
+function addTopicAPI(data) {
+	return axios.post("/topic", { title: data.title }, config(data.accessToken));
 }

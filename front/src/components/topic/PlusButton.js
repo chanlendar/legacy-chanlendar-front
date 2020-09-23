@@ -1,11 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useCookies } from "react-cookie";
 import { Avatar, Button, Grid } from "@material-ui/core";
 
 import {
 	OPEN_TOPIC_MODAL_EVENT,
 	CLOSE_TOPIC_MODAL_EVENT,
-	ADD_TOPIC_EVENT,
+	ADD_TOPIC_REQUEST,
 } from "reducers/topic";
 import { useMultipleEvents, useInput } from "hooks";
 import TopicModal from "./TopicModal";
@@ -14,7 +15,7 @@ import { useTopicStyles, useTopicButtonStyles, CustomTooltip } from "styles/topi
 function PlusButton() {
 	const topicStyles = useTopicStyles();
 	const buttonStyles = useTopicButtonStyles();
-
+	const [cookies] = useCookies("accessToken");
 	const isOpend = useSelector((state) => state.topic.isTopicModalOpend);
 	const avatarVariant = isOpend ? "rounded" : "circle";
 
@@ -22,7 +23,10 @@ function PlusButton() {
 	const dispatch = useDispatch();
 
 	const onCreateClick = (e) => {
-		dispatch({ type: ADD_TOPIC_EVENT, data: input });
+		dispatch({
+			type: ADD_TOPIC_REQUEST,
+			data: { title: input, accessToken: cookies.accessToken },
+		});
 		setInput("");
 	};
 

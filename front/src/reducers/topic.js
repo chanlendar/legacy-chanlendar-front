@@ -2,19 +2,6 @@ import produce from "immer";
 import faker from "faker";
 import moment from "moment";
 
-const createTaskDummyData = (num) => {
-	const tasks = new Array(num).fill(null);
-	const taskArray = tasks.map(() => {
-		return {
-			id: faker.random.number(),
-			task: faker.hacker.phrase(),
-			taskDate: moment(),
-			isFinished: false,
-		};
-	});
-	return taskArray;
-};
-
 const getMoment = () => {
 	return moment();
 };
@@ -33,9 +20,15 @@ const initialState = {
 	getTopicsLoading: false,
 	getTopicsDone: false,
 	getTopicsError: null,
+	addTopicLoading: false,
+	addTopicDone: false,
+	addTopicError: null,
 };
 
-export const ADD_TOPIC_EVENT = "ADD_TOPIC_EVENT";
+export const ADD_TOPIC_REQUEST = "ADD_TOPIC_REQUEST";
+export const ADD_TOPIC_SUCCESS = "ADD_TOPIC_SUCCESS";
+export const ADD_TOPIC_FAILURE = "ADD_TOPIC_FAILURE";
+
 export const CHANGE_TOPIC_EVENT = "CHANGE_TOPIC_EVENT";
 
 export const ADD_TASK_EVENT = "ADD_TASK_EVENT";
@@ -64,16 +57,24 @@ const reducer = (state = initialState, action) =>
 			 * Add saga later to call CLOSE_TOPIC_MODAL_EVENT
 			 * Whenever this event executed succesfully
 			 */
-			case ADD_TOPIC_EVENT:
-				const idx = draft.Topics.push({
-					id: faker.random.number(),
-					title: action.data,
-					Tasks: createTaskDummyData(faker.random.number(5)),
-				});
-				// CLOSE_TOPIC_MODAL_EVENT
-				draft.isTopicModalOpend = false;
+			case ADD_TOPIC_REQUEST:
+				draft.addTopicLoading = true;
+				draft.addTopicDone = false;
+				draft.addTopicError = null;
+				break;
+			case ADD_TOPIC_SUCCESS:
+				const idx = draft.Topics.push(action.data);
 				// CHANGE_TOPIC_EVENT
 				draft.currentTopic = draft.Topics[idx - 1];
+
+				draft.addTopicLoading = false;
+				draft.addTopicDone = true;
+				// CLOSE_TOPIC_MODAL_EVENT -> move this event to saga.
+				draft.isTopicModalOpend = false;
+				break;
+			case ADD_TOPIC_FAILURE:
+				draft.addTopicLoading = false;
+				draft.addTopicError = action.data;
 				break;
 			case CHANGE_TOPIC_EVENT:
 				draft.currentTopic = action.data;
