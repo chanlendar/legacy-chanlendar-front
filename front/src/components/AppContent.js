@@ -14,27 +14,7 @@ function AppContent() {
 	const [cookies, setCookies] = useCookies(["accessToken", "refreshToken"]);
 
 	useEffect(() => {
-		const tokenRenewal = async () => {
-			const result = await axios.post("/jwt/tokens", {
-				refreshToken: cookies.refreshToken,
-			});
-
-			const accessExpireDays = moment()
-				.add(1, "days")
-				.toDate();
-			const refreshExpireDays = moment()
-				.add(30, "days")
-				.toDate();
-			setCookies("accessToken", result.data.accessToken, {
-				path: "/",
-				expires: accessExpireDays,
-			});
-			setCookies("refreshToken", result.data.refreshToken, {
-				path: "/",
-				expires: refreshExpireDays,
-			});
-		};
-		tokenRenewal();
+		tokenRenewal(cookies, setCookies);
 	}, []);
 
 	return (
@@ -55,5 +35,24 @@ function AppContent() {
 		</Grid>
 	);
 }
+
+const tokenRenewal = async (cookies, setCookies) => {
+	const result = await axios.post("/jwt/tokens", {
+		refreshToken: cookies.refreshToken,
+	});
+
+	setCookies("accessToken", result.data.accessToken, {
+		path: "/",
+		expires: moment()
+			.add(1, "days")
+			.toDate(),
+	});
+	setCookies("refreshToken", result.data.refreshToken, {
+		path: "/",
+		expires: moment()
+			.add(30, "days")
+			.toDate(),
+	});
+};
 
 export default AppContent;

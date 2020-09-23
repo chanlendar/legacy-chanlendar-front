@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { Grow, Button, Grid, TextField, Typography } from "@material-ui/core";
+import { Button, Grid, TextField, Typography } from "@material-ui/core";
 
 import { useInput } from "hooks";
 import { LOG_IN_USER_REQUEST, SIGN_UP_WINDOW_OPEN } from "reducers/user";

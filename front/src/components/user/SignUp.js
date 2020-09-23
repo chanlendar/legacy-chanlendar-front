@@ -48,11 +48,14 @@ function SignUp() {
 		[nickname, email, password, dispatch],
 	);
 
-	const onClick = useCallback((e) => {
-		dispatch({
-			type: LOG_IN_WINDOW_OPEN,
-		});
-	}, []);
+	const onClick = useCallback(
+		(e) => {
+			dispatch({
+				type: LOG_IN_WINDOW_OPEN,
+			});
+		},
+		[dispatch],
+	);
 
 	useEffect(() => {
 		if (signUpDone) {
