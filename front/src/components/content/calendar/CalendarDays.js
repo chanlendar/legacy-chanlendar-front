@@ -53,7 +53,7 @@ const fillFirstDateOfMonth = (firstDay) => {
 
 const isSame = (date, tasks) => {
 	const isTaskExisted = tasks.find((v) => {
-		return v.date.isSame(date, "day");
+		return v.taskDate.isSame(date, "day");
 	});
 	let buttonVariant = "text";
 	if (isTaskExisted) {

@@ -51,7 +51,7 @@ function DailyList({ topic }) {
 						>
 							<ListItem>
 								<ListItemText
-									primary={<Typography>{v.task}</Typography>}
+									primary={<Typography>{v.title}</Typography>}
 								/>
 							</ListItem>
 						</CustomPaper>

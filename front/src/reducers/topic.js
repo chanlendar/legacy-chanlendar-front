@@ -158,7 +158,12 @@ const reducer = (state = initialState, action) =>
 				draft.getTopicsError = action.data;
 				break;
 			case TRANSFORM_TASK:
-				console.log(current(draft));
+				draft.Topics = draft.Topics.map((v) => {
+					v.Tasks = v.Tasks.map((t) => {
+						return { ...t, taskDate: moment(t.taskDate) };
+					});
+					return v;
+				});
 				break;
 			default:
 				break;
