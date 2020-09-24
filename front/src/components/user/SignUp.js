@@ -35,15 +35,15 @@ function SignUp() {
 
 	const onSubmit = useCallback(
 		(e) => {
-			e.preventDefault();
-			dispatch({
-				type: SIGN_UP_USER_REQUEST,
-				data: {
-					nickname,
-					email,
-					password,
-				},
-			});
+			// e.preventDefault();
+			// dispatch({
+			// 	type: SIGN_UP_USER_REQUEST,
+			// 	data: {
+			// 		nickname,
+			// 		email,
+			// 		password,
+			// 	},
+			// });
 		},
 		[nickname, email, password, dispatch],
 	);
