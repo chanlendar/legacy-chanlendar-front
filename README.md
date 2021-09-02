@@ -2,7 +2,8 @@
 
 ## Front
 
-A URL is haven't exist. its closed.
+A Url haven't exist. its closed.
+
 ---
 
 ![login](https://user-images.githubusercontent.com/42995061/92310504-1b710980-efea-11ea-99ee-009ca15b6dce.png)
