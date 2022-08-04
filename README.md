@@ -2,7 +2,7 @@
 
 ## Front
 
-A Url haven't exist. its closed.
+A URL hasn't existed. its closed Now.
 
 <b>purpose</b>
 
